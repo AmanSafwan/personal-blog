@@ -2129,3 +2129,292 @@ body.light-theme .about-bio-photo {
 	background: rgba(212, 175, 55, 0.12) !important;
 	color: var(--unisza-gold) !important;
 }
+
+/* =============================================
+   Campus & FIK page
+   ============================================= */
+
+.page-hero--campus {
+	background: linear-gradient(135deg, rgba(10, 10, 10, 0.92), rgba(26, 26, 26, 0.88)),
+		url('../img/campus/unisza-besut-campus.jpg') center / cover no-repeat;
+}
+
+.campus-overview {
+	background: var(--bg-base);
+	padding: 64px 0;
+}
+
+.campus-stats-bar {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 16px;
+	margin-bottom: 40px;
+}
+
+.campus-stat {
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	padding: 20px 14px;
+	text-align: center;
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.campus-stat:hover {
+	border-color: var(--border-accent);
+	transform: translateY(-2px);
+}
+
+.campus-stat strong {
+	display: block;
+	font-size: 1.6rem;
+	color: var(--unisza-gold);
+	line-height: 1.2;
+}
+
+.campus-stat span {
+	font-size: 11px;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+}
+
+.campus-intro-grid {
+	display: grid;
+	grid-template-columns: 1fr minmax(280px, 420px);
+	gap: clamp(28px, 4vw, 48px);
+	align-items: start;
+}
+
+.campus-intro-text h2 {
+	color: var(--text-primary);
+	font-size: clamp(1.6rem, 3vw, 2.1rem);
+	margin-bottom: 16px;
+}
+
+.campus-intro-text p {
+	color: var(--text-secondary);
+	line-height: 1.75;
+	margin-bottom: 16px;
+}
+
+.campus-official-links {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 12px;
+	margin-top: 20px;
+}
+
+.campus-official-photo,
+.campus-site-map {
+	margin: 0;
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	border: 1px solid var(--border-subtle);
+	box-shadow: var(--shadow-card);
+	background: var(--bg-surface);
+}
+
+.campus-official-photo img,
+.campus-site-map img {
+	width: 100%;
+	display: block;
+	transition: transform 0.35s ease;
+}
+
+.campus-official-photo a:hover img,
+.campus-site-map a:hover img {
+	transform: scale(1.02);
+}
+
+.campus-official-photo figcaption,
+.campus-site-map figcaption {
+	padding: 12px 16px;
+	font-size: 12px;
+	color: var(--text-muted);
+	text-align: center;
+	border-top: 1px solid var(--border-subtle);
+}
+
+.campus-official-photo figcaption a,
+.campus-site-map figcaption a {
+	color: var(--unisza-gold);
+}
+
+.campus-fik-section {
+	background: var(--bg-base);
+	padding: 64px 0;
+}
+
+.campus-fik-grid {
+	grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.campus-facilities {
+	background: var(--bg-base);
+	padding: 64px 0;
+}
+
+.campus-facility-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+	margin-bottom: 32px;
+}
+
+.campus-facility-item {
+	display: flex;
+	gap: 16px;
+	align-items: flex-start;
+	padding: 22px 20px;
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.campus-facility-item:hover {
+	border-color: var(--border-accent);
+	transform: translateY(-2px);
+}
+
+.campus-facility-item i {
+	font-size: 22px;
+	color: var(--unisza-gold);
+	width: 36px;
+	text-align: center;
+	flex-shrink: 0;
+	margin-top: 2px;
+}
+
+.campus-facility-item h4 {
+	margin: 0 0 6px;
+	font-size: 15px;
+	color: var(--text-primary);
+}
+
+.campus-facility-item p {
+	margin: 0;
+	font-size: 13px;
+	color: var(--text-secondary);
+	line-height: 1.6;
+	padding-top: 0;
+}
+
+.campus-site-map {
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.campus-environment {
+	background: var(--bg-base);
+	padding: 64px 0;
+}
+
+.campus-env-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+}
+
+.campus-env-grid .photo-card {
+	grid-column: span 1;
+}
+
+.campus-env-grid .photo-card img {
+	height: 220px;
+}
+
+.campus-tour {
+	background: var(--bg-base);
+	padding: 64px 0 72px;
+}
+
+.campus-tour-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+
+.campus-tour-card {
+	display: block;
+	padding: 28px 22px;
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	text-decoration: none;
+	transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+	height: 100%;
+}
+
+.campus-tour-card:hover {
+	transform: translateY(-4px);
+	border-color: var(--border-accent);
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.32);
+}
+
+.campus-tour-icon {
+	width: 52px;
+	height: 52px;
+	line-height: 52px;
+	text-align: center;
+	border-radius: 50%;
+	background: rgba(212, 175, 55, 0.15);
+	border: 1px solid var(--border-accent);
+	margin-bottom: 16px;
+}
+
+.campus-tour-icon i {
+	font-size: 22px;
+	color: var(--unisza-gold);
+}
+
+.campus-tour-card h4 {
+	color: var(--text-primary);
+	font-size: 16px;
+	margin-bottom: 8px;
+}
+
+.campus-tour-card p {
+	color: var(--text-secondary);
+	font-size: 13px;
+	line-height: 1.6;
+	margin-bottom: 12px;
+	padding-top: 0;
+}
+
+body.light-theme .campus-stat,
+body.light-theme .campus-facility-item,
+body.light-theme .campus-tour-card,
+body.light-theme .campus-official-photo,
+body.light-theme .campus-site-map {
+	background: var(--bg-elevated);
+}
+
+@media (max-width: 991px) {
+	.campus-intro-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.campus-env-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.campus-tour-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.campus-facility-list {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 767px) {
+	.campus-stats-bar {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.campus-env-grid {
+		grid-template-columns: 1fr;
+	}
+}
