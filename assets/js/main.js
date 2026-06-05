@@ -27,7 +27,7 @@ $(window).on('load', hidePreloader);
     '<span class="carousel-nav-btn" aria-label="Next slide" title="Next"><i class="fa fa-angle-right" aria-hidden="true"></i></span>'
   ];
 
-  if ($('.hero-slider').length) {
+  if ($.fn.owlCarousel && $('.hero-slider').length) {
     $('.hero-slider').owlCarousel({
       items: 1,
       nav: true,
@@ -45,7 +45,7 @@ $(window).on('load', hidePreloader);
     });
   }
 
-  if ($('.testimonial-slider').length) {
+  if ($.fn.owlCarousel && $('.testimonial-slider').length) {
     $('.testimonial-slider').owlCarousel({
       items: 1,
       nav: false,
@@ -55,23 +55,27 @@ $(window).on('load', hidePreloader);
     });
   }
 
-  $('.circle-progress').each(function () {
-    var cpvalue = $(this).data('cpvalue');
-    var cpcolor = $(this).data('cpcolor');
-    var cpid = $(this).data('cpid');
-    var isSkillRing = $(this).hasClass('skill-ring');
-    var size = isSkillRing ? 100 : 80;
-    $(this).append('<div class="' + cpid + '"></div><div class="progress-value"><h3>' + cpvalue + '%</h3></div>');
-    $('.' + cpid).circleProgress({
-      value: Math.min(cpvalue / 100, 1),
-      size: size,
-      thickness: isSkillRing ? 5 : 4,
-      fill: cpcolor,
-      emptyFill: isSkillRing ? 'rgba(212, 175, 55, 0.12)' : 'rgba(0, 0, 0, 0)'
+  if ($.fn.circleProgress) {
+    $('.circle-progress').each(function () {
+      var cpvalue = $(this).data('cpvalue');
+      var cpcolor = $(this).data('cpcolor');
+      var cpid = $(this).data('cpid');
+      var isSkillRing = $(this).hasClass('skill-ring');
+      var size = isSkillRing ? 100 : 80;
+      $(this).append('<div class="' + cpid + '"></div><div class="progress-value"><h3>' + cpvalue + '%</h3></div>');
+      $('.' + cpid).circleProgress({
+        value: Math.min(cpvalue / 100, 1),
+        size: size,
+        thickness: isSkillRing ? 5 : 4,
+        fill: cpcolor,
+        emptyFill: isSkillRing ? 'rgba(212, 175, 55, 0.12)' : 'rgba(0, 0, 0, 0)'
+      });
     });
-  });
+  }
 
-  $('.video-play').magnificPopup({ type: 'iframe' });
+  if ($.fn.magnificPopup && $('.video-play').length) {
+    $('.video-play').magnificPopup({ type: 'iframe' });
+  }
 
   var pageName = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
   if (!pageName || pageName === '') pageName = 'index.html';
@@ -116,7 +120,7 @@ $(window).on('load', hidePreloader);
 
   initHeader();
 
-  if ($('.main-menu').length && !$('.slicknav_menu').length) {
+  if ($.fn.slicknav && $('.main-menu').length && !$('.slicknav_menu').length) {
     $('.main-menu').slicknav({
       appendTo: '.header-actions',
       allowParentLinks: true,
@@ -406,7 +410,7 @@ $(window).on('load', hidePreloader);
   });
 
   // Lightbox, delegated so carousels and dynamic grids work
-  if ($('.image-popup').length) {
+  if ($.fn.magnificPopup && $('.image-popup').length) {
     $('body').magnificPopup({
       delegate: '.image-popup',
       type: 'image',

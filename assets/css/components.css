@@ -4105,6 +4105,11 @@ body.light-theme .campus-programme-hero {
 	align-items: flex-start;
 }
 
+.page-contact .reveal-on-scroll {
+	opacity: 1;
+	transform: none;
+}
+
 .page-contact .contact-section {
 	position: relative;
 	z-index: 50;
