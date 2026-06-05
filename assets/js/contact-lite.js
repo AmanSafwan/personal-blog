@@ -56,15 +56,7 @@
   }
 
   window.addEventListener('message', function (event) {
-    if (!event.data) return;
-
-    if (event.data.type === 'contact-frame-ready') {
-      sendInit();
-    }
-
-    if (event.data.type === 'contact-frame-resize' && frame && event.data.height) {
-      var nextHeight = Math.max(event.data.height, 500);
-      frame.style.height = nextHeight + 'px';
-    }
+    if (!event.data || event.data.type !== 'contact-frame-ready') return;
+    sendInit();
   });
 })();

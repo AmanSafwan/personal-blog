@@ -44,7 +44,6 @@
     if (event.data.theme) {
       applyTheme(event.data.theme);
     }
-    resizeFrame();
   });
 
   if (window.parent && window.parent !== window) {
@@ -57,28 +56,6 @@
     frameStatus.className = 'frame-status ' + (type || '');
   }
 
-  function resizeFrame() {
-    var height = Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      document.querySelector('.frame-form-wrap') ? document.querySelector('.frame-form-wrap').scrollHeight : 0
-    ) + 12;
-    if (window.parent && window.parent !== window) {
-      window.parent.postMessage({ type: 'contact-frame-resize', height: height }, '*');
-    }
-  }
-
-  if (window.ResizeObserver) {
-    var resizeObserver = new ResizeObserver(function () {
-      resizeFrame();
-    });
-    resizeObserver.observe(document.body);
-    var wrap = document.querySelector('.frame-form-wrap');
-    if (wrap) {
-      resizeObserver.observe(wrap);
-    }
-  }
-
   if (message && charCount) {
     function updateCharCount() {
       var len = (message.value || '').trim().length;
@@ -89,14 +66,10 @@
         charCount.textContent = len + ' characters ready to send';
         charCount.classList.add('is-valid');
       }
-      resizeFrame();
     }
     message.addEventListener('input', updateCharCount);
     updateCharCount();
   }
-
-  window.addEventListener('load', resizeFrame);
-  window.addEventListener('resize', resizeFrame);
 
   if (!form) return;
 

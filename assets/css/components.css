@@ -4240,8 +4240,9 @@ body.light-theme .campus-programme-hero {
 .contact-form-iframe {
 	display: block;
 	width: 100%;
-	min-height: 540px;
-	height: 540px;
+	height: 600px;
+	min-height: 600px;
+	max-height: 600px;
 	border: none;
 	background: transparent;
 	overflow: hidden;
@@ -4567,14 +4568,33 @@ body.light-theme .page-contact-frame {
 }
 
 .contact-submit-btn {
-	min-width: 180px;
-	min-height: 48px;
+	min-width: 160px;
+	min-height: 44px;
+	padding: 12px 24px !important;
+	font-size: 14px !important;
+	line-height: 1.2 !important;
+	border-radius: var(--radius-md) !important;
+	text-transform: none !important;
+	letter-spacing: 0.02em;
 	-webkit-appearance: none;
 	appearance: none;
 	position: relative;
 	z-index: 5;
 	pointer-events: auto !important;
 	cursor: pointer;
+	width: auto;
+	max-width: 100%;
+	white-space: nowrap;
+}
+
+.page-contact-frame .contact-submit-btn {
+	transform: none !important;
+	box-shadow: none !important;
+}
+
+.page-contact-frame .contact-submit-btn:hover {
+	transform: none !important;
+	box-shadow: 0 8px 20px rgba(16, 221, 180, 0.22) !important;
 }
 
 .contact-submit-btn:disabled {
@@ -4870,10 +4890,18 @@ body.light-theme .contact-faq-item {
 	.contact-submit-btn {
 		width: 100%;
 		max-width: 100%;
+		padding: 14px 20px !important;
+		white-space: normal;
 	}
 
 	.contact-form-actions {
 		padding-bottom: calc(8px + env(safe-area-inset-bottom, 0px));
+	}
+
+	.contact-form-iframe {
+		height: 640px;
+		min-height: 640px;
+		max-height: 640px;
 	}
 
 	.page-contact .scroll-top-btn.visible {
