@@ -38,12 +38,27 @@
     }
   }
 
+  var resizeTimer;
+
+  function reportHeight() {
+    var wrap = document.querySelector('.frame-form-wrap');
+    if (!wrap || !window.parent || window.parent === window) return;
+    var height = Math.ceil(wrap.getBoundingClientRect().height);
+    window.parent.postMessage({ type: 'contact-frame-resize', height: height }, '*');
+  }
+
+  function scheduleHeightReport() {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(reportHeight, 60);
+  }
+
   window.addEventListener('message', function (event) {
     if (!event.data || event.data.type !== 'contact-init') return;
     setReturnUrl(event.data.returnUrl);
     if (event.data.theme) {
       applyTheme(event.data.theme);
     }
+    scheduleHeightReport();
   });
 
   if (window.parent && window.parent !== window) {
@@ -54,7 +69,11 @@
     if (!frameStatus) return;
     frameStatus.textContent = text;
     frameStatus.className = 'frame-status ' + (type || '');
+    scheduleHeightReport();
   }
+
+  window.addEventListener('load', scheduleHeightReport);
+  window.addEventListener('resize', scheduleHeightReport);
 
   if (message && charCount) {
     function updateCharCount() {
@@ -67,8 +86,12 @@
         charCount.classList.add('is-valid');
       }
     }
-    message.addEventListener('input', updateCharCount);
+    message.addEventListener('input', function () {
+      updateCharCount();
+      scheduleHeightReport();
+    });
     updateCharCount();
+    scheduleHeightReport();
   }
 
   if (!form) return;

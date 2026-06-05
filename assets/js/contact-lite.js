@@ -56,7 +56,19 @@
   }
 
   window.addEventListener('message', function (event) {
-    if (!event.data || event.data.type !== 'contact-frame-ready') return;
+    if (!event.data || !frame) return;
+
+    if (event.data.type === 'contact-frame-ready') {
+      sendInit();
+    }
+
+    if (event.data.type === 'contact-frame-resize' && event.data.height) {
+      var height = Math.max(1, Math.ceil(event.data.height));
+      frame.style.height = height + 'px';
+    }
+  });
+
+  window.addEventListener('resize', function () {
     sendInit();
   });
 })();
