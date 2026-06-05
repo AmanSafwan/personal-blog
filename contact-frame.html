@@ -5,24 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Form</title>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/theme-unisza.css">
   <link rel="stylesheet" href="assets/css/components.css">
-  <style>
-    html, body { margin: 0; padding: 0; background: transparent; overflow: hidden; }
-    body { font-family: Roboto, sans-serif; }
-    .frame-form-wrap { padding: 0 28px 28px; }
-    .frame-status { margin: 0 0 16px; padding: 12px 14px; border-radius: 8px; font-size: 14px; display: none; }
-    .frame-status.error { display: block; border: 1px solid #ff5a72; background: rgba(255, 90, 114, 0.1); color: #ffb4c0; }
-    .frame-status.success { display: block; border: 1px solid rgba(16, 221, 180, 0.5); background: rgba(16, 221, 180, 0.1); color: #10ddb4; }
-    @media (max-width: 767px) { .frame-form-wrap { padding: 0 20px 20px; } }
-  </style>
 </head>
 <body class="page-contact-frame">
   <div class="frame-form-wrap">
     <p id="frameStatus" class="frame-status" role="alert" aria-live="polite"></p>
 
-    <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/ajax/safwanaman2003@gmail.com" method="POST" data-quillbot="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" spellcheck="false">
+    <form id="contactForm" class="contact-form-pro contact-form-pro--frame" action="https://formsubmit.co/ajax/safwanaman2003@gmail.com" method="POST" data-quillbot="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false" spellcheck="false">
       <input type="hidden" name="_subject" value="Portfolio inquiry from AmanSafwan website">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
@@ -83,7 +76,7 @@
         <button type="submit" id="contactSendBtn" class="site-btn contact-submit-btn"><i class="fa fa-paper-plane"></i> Send Message</button>
         <a href="mailto:safwanaman2003@gmail.com?subject=Portfolio%20Inquiry" target="_parent" class="contact-email-fallback"><i class="fa fa-envelope-o"></i> Email directly instead</a>
       </div>
-      <p class="contact-form-note"><i class="fa fa-info-circle"></i> First submission activates FormSubmit. Check Gmail (and spam) for the activation link from FormSubmit.</p>
+      <p class="contact-form-note"><i class="fa fa-info-circle"></i> By submitting, you agree that I may reply to your email address. Messages are delivered securely and are not stored on this website.</p>
     </form>
   </div>
   <script src="assets/js/contact-frame.js"></script>

@@ -4231,13 +4231,68 @@ body.light-theme .campus-programme-hero {
 	color: var(--text-primary);
 }
 
+.contact-form-iframe-wrap {
+	border-top: 1px solid var(--border-subtle);
+	padding: 0 28px 24px;
+	background: var(--bg-surface);
+}
+
 .contact-form-iframe {
 	display: block;
 	width: 100%;
-	min-height: 560px;
+	min-height: 540px;
+	height: 540px;
 	border: none;
 	background: transparent;
 	overflow: hidden;
+}
+
+/* Embedded contact form frame */
+.page-contact-frame {
+	margin: 0;
+	padding: 0;
+	background: var(--bg-surface);
+	color: var(--text-primary);
+	overflow: hidden;
+}
+
+.page-contact-frame .frame-form-wrap {
+	padding: 20px 0 0;
+}
+
+.page-contact-frame .contact-form-pro--frame {
+	padding: 0;
+}
+
+.page-contact-frame .frame-status {
+	margin: 0 0 14px;
+	padding: 12px 14px;
+	border-radius: var(--radius-md);
+	font-size: var(--font-sm);
+	display: none;
+}
+
+.page-contact-frame .frame-status.error {
+	display: block;
+	border: 1px solid #ff5a72;
+	background: rgba(255, 90, 114, 0.1);
+	color: #ffb4c0;
+}
+
+.page-contact-frame .frame-status.success {
+	display: block;
+	border: 1px solid rgba(16, 221, 180, 0.5);
+	background: rgba(16, 221, 180, 0.1);
+	color: #10ddb4;
+}
+
+.page-contact-frame .contact-form-note {
+	margin-bottom: 0;
+}
+
+body.light-theme .contact-form-iframe-wrap,
+body.light-theme .page-contact-frame {
+	background: var(--bg-elevated);
 }
 
 .contact-trust-row {
@@ -4783,6 +4838,18 @@ body.light-theme .contact-faq-item {
 
 	.contact-form-head,
 	.contact-form-pro,
+	.contact-success-banner,
+	.contact-trust-row,
+	.contact-activation-note,
+	.contact-form-iframe-wrap {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.contact-form-iframe-wrap {
+		padding: 0 20px 20px;
+	}
+
 	.contact-success-banner,
 	.contact-trust-row,
 	.contact-activation-note {

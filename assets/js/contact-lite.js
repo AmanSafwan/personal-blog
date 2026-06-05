@@ -32,20 +32,27 @@
     showSuccessState();
   }
 
-  if (frame) {
-    function sendInit() {
-      try {
-        frame.contentWindow.postMessage({
-          type: 'contact-init',
-          returnUrl: returnUrl
-        }, '*');
-      } catch (e) {
-        /* iframe not ready */
-      }
+  function sendInit() {
+    if (!frame) return;
+    try {
+      frame.contentWindow.postMessage({
+        type: 'contact-init',
+        returnUrl: returnUrl,
+        theme: document.body.classList.contains('light-theme') ? 'light' : 'dark'
+      }, '*');
+    } catch (e) {
+      /* iframe not ready */
     }
+  }
 
+  if (frame) {
     frame.addEventListener('load', sendInit);
     sendInit();
+  }
+
+  var themeObserver = new MutationObserver(sendInit);
+  if (document.body) {
+    themeObserver.observe(document.body, { attributes: true, attributeFilter: ['class'] });
   }
 
   window.addEventListener('message', function (event) {
@@ -56,7 +63,8 @@
     }
 
     if (event.data.type === 'contact-frame-resize' && frame && event.data.height) {
-      frame.style.height = Math.max(event.data.height, 520) + 'px';
+      var nextHeight = Math.max(event.data.height, 500);
+      frame.style.height = nextHeight + 'px';
     }
   });
 })();
