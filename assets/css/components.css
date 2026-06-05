@@ -4161,26 +4161,148 @@ body.light-theme .campus-programme-hero {
 	line-height: var(--leading);
 }
 
-.contact-form-fallback-note {
-	margin: 0 28px 16px;
-	padding: 12px 14px;
+.contact-success-banner {
+	display: none;
+	align-items: flex-start;
+	gap: 14px;
+	margin: 0 28px 20px;
+	padding: 16px 18px;
 	border-radius: var(--radius-md);
-	border: 1px solid rgba(212, 175, 55, 0.35);
-	background: rgba(212, 175, 55, 0.08);
+	border: 1px solid rgba(16, 221, 180, 0.45);
+	background: rgba(16, 221, 180, 0.1);
+	color: var(--text-primary);
+}
+
+.contact-success-banner.is-visible {
+	display: flex;
+}
+
+.contact-success-banner > i {
+	flex-shrink: 0;
+	font-size: 1.5rem;
+	color: #10ddb4;
+	margin-top: 2px;
+}
+
+.contact-success-banner strong {
+	display: block;
+	font-size: var(--font-base);
+	margin-bottom: 4px;
+}
+
+.contact-success-banner p {
+	margin: 0;
 	font-size: var(--font-sm);
 	color: var(--text-secondary);
 	line-height: var(--leading);
 }
 
-.contact-form-fallback-note i {
-	color: var(--unisza-gold);
-	margin-right: 6px;
+.contact-trust-row {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px 16px;
+	margin: 0 28px 20px;
+	padding-top: 4px;
 }
 
-.contact-form-fallback-note a {
-	color: var(--unisza-gold);
+.contact-trust-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	font-size: var(--font-xs);
 	font-weight: 600;
-	text-decoration: underline;
+	color: var(--text-muted);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.contact-trust-item i {
+	color: var(--unisza-gold);
+}
+
+.contact-faq-section {
+	background: var(--bg-elevated);
+}
+
+.contact-faq-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 16px;
+	margin-top: 8px;
+}
+
+.contact-faq-item {
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	padding: 0;
+	overflow: hidden;
+	transition: border-color 0.2s ease;
+}
+
+.contact-faq-item:hover {
+	border-color: var(--border-accent);
+}
+
+.contact-faq-item summary {
+	cursor: pointer;
+	list-style: none;
+	padding: 18px 20px;
+	font-size: var(--font-base);
+	font-weight: 600;
+	color: var(--text-primary);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.contact-faq-item summary::-webkit-details-marker {
+	display: none;
+}
+
+.contact-faq-item summary::after {
+	content: '+';
+	color: var(--unisza-gold);
+	font-size: 1.25rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+.contact-faq-item[open] summary::after {
+	content: '−';
+}
+
+.contact-faq-item p {
+	margin: 0;
+	padding: 0 20px 18px;
+	font-size: var(--font-sm);
+	color: var(--text-secondary);
+	line-height: var(--leading);
+}
+
+.page-contact .contact-section,
+.page-contact .contact-form-panel,
+.page-contact .contact-form-pro,
+.page-contact .contact-form-actions,
+.page-contact #contactForm,
+.page-contact #contactForm input,
+.page-contact #contactForm select,
+.page-contact #contactForm textarea,
+.page-contact #contactForm button,
+.page-contact .contact-submit-btn {
+	pointer-events: auto !important;
+	touch-action: manipulation;
+}
+
+.page-contact .contact-submit-btn {
+	position: relative;
+	z-index: 100;
+	cursor: pointer;
+}
+
+.page-contact .contact-submit-btn[aria-busy='true'] {
+	opacity: 0.9;
 }
 
 .contact-form-badge {
@@ -4576,11 +4698,25 @@ body.light-theme .contact-form-pro textarea {
 	background: var(--bg-surface);
 }
 
-body.light-theme .contact-topics-section {
+body.light-theme .contact-topics-section,
+body.light-theme .contact-faq-section {
 	background: var(--bg-surface);
 }
 
+body.light-theme .contact-success-banner {
+	background: rgba(16, 221, 180, 0.12);
+	border-color: rgba(16, 221, 180, 0.5);
+}
+
+body.light-theme .contact-faq-item {
+	background: var(--bg-elevated);
+}
+
 @media (max-width: 991px) {
+	.contact-faq-grid {
+		grid-template-columns: 1fr;
+	}
+
 	.contact-stats-bar {
 		grid-template-columns: repeat(2, 1fr);
 	}
@@ -4600,6 +4736,14 @@ body.light-theme .contact-topics-section {
 	.contact-field-row {
 		grid-template-columns: 1fr;
 		gap: 0;
+	}
+
+	.contact-form-head,
+	.contact-form-pro,
+	.contact-success-banner,
+	.contact-trust-row {
+		margin-left: 20px;
+		margin-right: 20px;
 	}
 
 	.contact-form-head,
