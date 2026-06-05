@@ -4587,6 +4587,15 @@ body.light-theme .contact-topics-section {
 		bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
 	}
 
+	.slicknav_nav {
+		pointer-events: none;
+	}
+
+	.slicknav_open .slicknav_nav,
+	.slicknav_menu.slicknav_open .slicknav_nav {
+		pointer-events: auto;
+	}
+
 	.contact-field-tip {
 		display: none;
 	}

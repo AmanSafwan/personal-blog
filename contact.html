@@ -19,9 +19,12 @@
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/theme-unisza.css">
   <link rel="stylesheet" href="assets/css/components.css">
+  <style>
+    #preloder { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+    #contactForm, #contactForm .contact-submit-btn { pointer-events: auto !important; position: relative; z-index: 20; }
+  </style>
 </head>
-<body>
-  <div id="preloder"><div class="loader"></div></div>
+<body class="page-contact preloader-done">
   <header class="header-section">
     <a href="index.html" class="site-logo"><img src="assets/img/brand/unisza-logo.png" alt="UniSZA, Universiti Sultan Zainal Abidin"></a>
     <ul class="main-menu">
@@ -83,11 +86,11 @@
               <span class="contact-form-badge"><i class="fa fa-lock"></i> Secure via FormSubmit</span>
             </div>
 
-            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST" novalidate>
+            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST">
               <input type="hidden" name="_subject" value="New portfolio message from AmanSafwan">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" id="formNext" value="">
+              <input type="hidden" name="_next" id="formNext" value="https://amansafwan.github.io/personal-blog/contact.html?sent=1">
               <input type="hidden" name="_replyto" id="formReplyTo" value="">
               <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
@@ -135,7 +138,7 @@
               </div>
 
               <div class="contact-form-actions">
-                <button type="button" id="contactSendBtn" class="site-btn contact-submit-btn"><i class="fa fa-paper-plane"></i> Send Message</button>
+                <button type="submit" id="contactSendBtn" class="site-btn contact-submit-btn"><i class="fa fa-paper-plane"></i> Send Message</button>
                 <a href="mailto:safwanaman2003@gmail.com" class="contact-email-fallback"><i class="fa fa-envelope-o"></i> Or email directly</a>
               </div>
               <p id="formStatus" class="form-status" aria-live="polite" role="status"></p>

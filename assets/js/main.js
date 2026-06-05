@@ -9,7 +9,6 @@ function hidePreloader() {
 }
 
 $(function () {
-  $('#preloder').addClass('is-active');
   hidePreloader();
 });
 
@@ -168,7 +167,6 @@ $(window).on('load', hidePreloader);
     var $message = $('#message');
     var $charCount = $('#messageHint');
     var $sendBtn = $('#contactSendBtn');
-    var submitLabel = '<i class="fa fa-paper-plane"></i> Send Message';
     var returnUrl = window.location.href.split('?')[0].split('#')[0] + '?sent=1';
 
     $('#formNext').val(returnUrl);
@@ -198,7 +196,9 @@ $(window).on('load', hidePreloader);
       if (type) {
         status.addClass(type);
       }
-      status[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      if (status[0] && status[0].scrollIntoView) {
+        status[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
     }
 
     function focusFirstInvalid() {
@@ -209,62 +209,56 @@ $(window).on('load', hidePreloader);
       }
     }
 
-    function sendContactForm() {
+    $message.on('input', updateCharCount);
+    updateCharCount();
+
+    $form.on('submit', function (e) {
       var name = $('#name').val().trim();
       var email = $('#email').val().trim();
       var inquiry = ($('#inquiry').val() || '').trim();
       var message = $message.val().trim();
       var honey = ($form.find('[name="_honey"]').val() || '').trim();
       var status = $('#formStatus');
-      var form = $form[0];
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       $form.find('.is-invalid').removeClass('is-invalid');
 
       if (honey) {
-        return false;
+        e.preventDefault();
+        return;
       }
 
       if (!name || !email || !inquiry || !message) {
+        e.preventDefault();
         if (!name) $('#name').addClass('is-invalid');
         if (!email) $('#email').addClass('is-invalid');
         if (!inquiry) $('#inquiry').addClass('is-invalid');
         if (!message) $message.addClass('is-invalid');
         showFormStatus(status, 'Please complete all required fields before sending.', 'error');
         focusFirstInvalid();
-        return false;
+        return;
       }
 
       if (!emailRegex.test(email)) {
+        e.preventDefault();
         $('#email').addClass('is-invalid');
         showFormStatus(status, 'Please enter a valid email address.', 'error');
         $('#email').trigger('focus');
-        return false;
+        return;
       }
 
       if (message.length < 10) {
+        e.preventDefault();
         $message.addClass('is-invalid');
         showFormStatus(status, 'Please write at least 10 characters in your message.', 'error');
         $message.trigger('focus');
-        return false;
+        return;
       }
 
       $('#formReplyTo').val(email);
+      $('#formNext').val(returnUrl);
       $sendBtn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
       showFormStatus(status, 'Sending your message…', '');
-
-      $form.off('submit');
-      HTMLFormElement.prototype.submit.call(form);
-      return true;
-    }
-
-    $message.on('input', updateCharCount);
-    updateCharCount();
-
-    $sendBtn.on('click', sendContactForm);
-    $form.on('submit', function (e) {
-      e.preventDefault();
-      sendContactForm();
     });
   }
 
