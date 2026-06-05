@@ -4105,6 +4105,22 @@ body.light-theme .campus-programme-hero {
 	align-items: flex-start;
 }
 
+.page-contact .contact-section {
+	position: relative;
+	z-index: 50;
+	isolation: isolate;
+}
+
+.page-contact .contact-form-panel {
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-card);
+	overflow: visible;
+	position: relative;
+	z-index: 51;
+}
+
 .contact-form-panel {
 	background: var(--bg-surface);
 	border: 1px solid var(--border-subtle);
@@ -4143,6 +4159,28 @@ body.light-theme .campus-programme-hero {
 	font-size: var(--font-sm);
 	color: var(--text-muted);
 	line-height: var(--leading);
+}
+
+.contact-form-fallback-note {
+	margin: 0 28px 16px;
+	padding: 12px 14px;
+	border-radius: var(--radius-md);
+	border: 1px solid rgba(212, 175, 55, 0.35);
+	background: rgba(212, 175, 55, 0.08);
+	font-size: var(--font-sm);
+	color: var(--text-secondary);
+	line-height: var(--leading);
+}
+
+.contact-form-fallback-note i {
+	color: var(--unisza-gold);
+	margin-right: 6px;
+}
+
+.contact-form-fallback-note a {
+	color: var(--unisza-gold);
+	font-weight: 600;
+	text-decoration: underline;
 }
 
 .contact-form-badge {
@@ -4587,8 +4625,13 @@ body.light-theme .contact-topics-section {
 		bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
 	}
 
-	.slicknav_nav {
-		pointer-events: none;
+	.slicknav_menu:not(.slicknav_open) .slicknav_nav,
+	.slicknav_nav.slicknav_hidden {
+		display: none !important;
+		visibility: hidden !important;
+		pointer-events: none !important;
+		height: 0 !important;
+		overflow: hidden !important;
 	}
 
 	.slicknav_open .slicknav_nav,

@@ -21,7 +21,24 @@
   <link rel="stylesheet" href="assets/css/components.css">
   <style>
     #preloder { display: none !important; visibility: hidden !important; pointer-events: none !important; }
-    #contactForm, #contactForm .contact-submit-btn { pointer-events: auto !important; position: relative; z-index: 20; }
+    .page-contact .contact-section,
+    .page-contact .contact-form-panel,
+    .page-contact .contact-form-pro,
+    .page-contact .contact-form-actions,
+    .page-contact #contactForm,
+    .page-contact #contactForm input,
+    .page-contact #contactForm select,
+    .page-contact #contactForm textarea,
+    .page-contact #contactForm button,
+    .page-contact .contact-submit-btn {
+      pointer-events: auto !important;
+      touch-action: manipulation;
+    }
+    .page-contact .contact-submit-btn {
+      position: relative;
+      z-index: 100;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body class="page-contact preloader-done">
@@ -86,7 +103,9 @@
               <span class="contact-form-badge"><i class="fa fa-lock"></i> Secure via FormSubmit</span>
             </div>
 
-            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST">
+            <p class="contact-form-fallback-note"><i class="fa fa-exclamation-circle"></i> Button not responding? <a href="form.html">Open the simple contact form</a> (no extra scripts) or <a href="mailto:safwanaman2003@gmail.com">email directly</a>. Browser extensions such as QuillBot can block clicks on this page.</p>
+
+            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST" data-quillbot="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false">
               <input type="hidden" name="_subject" value="New portfolio message from AmanSafwan">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
@@ -99,14 +118,14 @@
                   <label for="name">Full Name <span class="contact-required">*</span></label>
                   <div class="contact-input-wrap">
                     <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" id="name" name="name" placeholder="e.g. Ahmad bin Ali" minlength="2" required autocomplete="name">
+                    <input type="text" id="name" name="name" placeholder="e.g. Ahmad bin Ali" minlength="2" required autocomplete="name" data-quillbot="false" data-gramm="false">
                   </div>
                 </div>
                 <div class="contact-field">
                   <label for="email">Email Address <span class="contact-required">*</span></label>
                   <div class="contact-input-wrap">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false">
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" data-quillbot="false" data-gramm="false">
                   </div>
                 </div>
               </div>
@@ -115,9 +134,8 @@
                 <label for="inquiry">Inquiry Type <span class="contact-required">*</span></label>
                 <div class="contact-input-wrap contact-input-wrap--select">
                   <i class="fa fa-tag" aria-hidden="true"></i>
-                  <select id="inquiry" name="inquiry" required>
-                    <option value="" disabled selected hidden>Select a topic</option>
-                    <option value="Internship Opportunity">Internship Opportunity</option>
+                  <select id="inquiry" name="inquiry" required data-quillbot="false">
+                    <option value="Internship Opportunity" selected>Internship Opportunity</option>
                     <option value="Project Collaboration">Project Collaboration</option>
                     <option value="Freelance / Contract">Freelance / Contract</option>
                     <option value="Academic / Research">Academic / Research</option>
@@ -129,7 +147,7 @@
               <div class="contact-field">
                 <label for="message">Your Message <span class="contact-required">*</span></label>
                 <div class="contact-input-wrap contact-input-wrap--textarea">
-                  <textarea id="message" name="message" rows="6" placeholder="Tell me about the role, project scope, timeline, or how you'd like to collaborate…" minlength="10" required></textarea>
+                  <textarea id="message" name="message" rows="6" placeholder="Tell me about the role, project scope, timeline, or how you'd like to collaborate…" minlength="10" required data-quillbot="false" data-gramm="false"></textarea>
                 </div>
                 <div class="contact-field-meta">
                   <span id="messageHint" class="contact-char-count">Minimum 10 characters</span>
@@ -284,8 +302,7 @@
   <script src="assets/js/jquery-3.2.1.min.js"></script>
   <script src="assets/js/bootstrap.min.js"></script>
   <script src="assets/js/jquery.slicknav.js"></script>
-  <script src="assets/js/owl.carousel.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact-lite.js"></script>
 </body>
 </html>

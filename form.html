@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Send Message | Aman Safwan</title>
+  <meta name="robots" content="noindex">
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Roboto, Arial, sans-serif;
+      background: #0f1115;
+      color: #f1f5f9;
+      padding: 24px 16px 48px;
+      line-height: 1.5;
+    }
+    .wrap { max-width: 520px; margin: 0 auto; }
+    h1 { font-size: 1.35rem; margin: 0 0 8px; }
+    p { color: #94a3b8; margin: 0 0 20px; font-size: 0.95rem; }
+    label { display: block; margin: 0 0 6px; font-size: 0.9rem; font-weight: 600; }
+    input, select, textarea {
+      width: 100%;
+      margin: 0 0 16px;
+      padding: 12px 14px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      background: #1e293b;
+      color: #f1f5f9;
+      font-size: 16px;
+    }
+    textarea { min-height: 140px; resize: vertical; }
+    button, .back {
+      display: inline-block;
+      width: 100%;
+      padding: 14px 20px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #d4af37, #b8941f);
+      color: #111;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+    }
+    .back {
+      margin-top: 12px;
+      background: transparent;
+      border: 1px solid #475569;
+      color: #cbd5e1;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Send a Message</h1>
+    <p>Simple contact form with no extra scripts. Fill in the fields and tap Send.</p>
+
+    <form action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New portfolio message from AmanSafwan">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_next" id="formNextSimple" value="contact.html?sent=1">
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required minlength="2" autocomplete="name">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required autocomplete="email" inputmode="email">
+
+      <label for="inquiry">Inquiry Type</label>
+      <select id="inquiry" name="inquiry" required>
+        <option value="Internship Opportunity">Internship Opportunity</option>
+        <option value="Project Collaboration">Project Collaboration</option>
+        <option value="Freelance / Contract">Freelance / Contract</option>
+        <option value="Academic / Research">Academic / Research</option>
+        <option value="General Inquiry">General Inquiry</option>
+      </select>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required minlength="10"></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <a class="back" href="contact.html">Back to Contact page</a>
+  </div>
+  <script>
+    var next = document.getElementById('formNextSimple');
+    if (next) {
+      next.value = window.location.href.replace(/form\.html.*$/, 'contact.html?sent=1');
+    }
+  </script>
+</body>
+</html>

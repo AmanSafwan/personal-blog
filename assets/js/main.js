@@ -2,9 +2,9 @@
 
 function hidePreloader() {
   var $preloader = $('#preloder');
-  $preloader.removeClass('is-active').css({ pointerEvents: 'none' }).stop(true, true);
-  $('.loader').hide();
-  $preloader.hide();
+  if ($preloader.length) {
+    $preloader.remove();
+  }
   $('body').addClass('preloader-done');
 }
 
@@ -160,109 +160,17 @@ $(window).on('load', hidePreloader);
 
   $('#year').text(new Date().getFullYear());
 
-  function initContactForm() {
-    var $form = $('#contactForm');
-    if (!$form.length) return;
-
-    var $message = $('#message');
-    var $charCount = $('#messageHint');
-    var $sendBtn = $('#contactSendBtn');
-    var returnUrl = window.location.href.split('?')[0].split('#')[0] + '?sent=1';
-
-    $('#formNext').val(returnUrl);
-
-    if (window.location.search.indexOf('sent=1') !== -1) {
-      $('#formStatus')
-        .text('Message sent successfully. I will reply to your email within 24–48 hours. Thank you!')
-        .addClass('success')
-        .removeClass('error');
-      if (window.history && window.history.replaceState) {
-        window.history.replaceState({}, document.title, returnUrl.replace('?sent=1', ''));
-      }
+  if (!$('body').hasClass('page-contact')) {
+    var $legacyForm = $('#contactForm');
+    if ($legacyForm.length) {
+      $legacyForm.on('submit', function () {
+        var email = ($('#email').val() || '').trim();
+        if (email) {
+          $('#formReplyTo').val(email);
+        }
+      });
     }
-
-    function updateCharCount() {
-      if (!$message.length || !$charCount.length) return;
-      var len = ($message.val() || '').trim().length;
-      if (len < 10) {
-        $charCount.text(len + ' / 10 characters minimum').removeClass('is-valid');
-      } else {
-        $charCount.text(len + ' characters · Ready to send').addClass('is-valid');
-      }
-    }
-
-    function showFormStatus(status, text, type) {
-      status.text(text).removeClass('error success');
-      if (type) {
-        status.addClass(type);
-      }
-      if (status[0] && status[0].scrollIntoView) {
-        status[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }
-    }
-
-    function focusFirstInvalid() {
-      var $first = $form.find('.is-invalid').first();
-      if ($first.length) {
-        $first[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-        $first.trigger('focus');
-      }
-    }
-
-    $message.on('input', updateCharCount);
-    updateCharCount();
-
-    $form.on('submit', function (e) {
-      var name = $('#name').val().trim();
-      var email = $('#email').val().trim();
-      var inquiry = ($('#inquiry').val() || '').trim();
-      var message = $message.val().trim();
-      var honey = ($form.find('[name="_honey"]').val() || '').trim();
-      var status = $('#formStatus');
-      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-      $form.find('.is-invalid').removeClass('is-invalid');
-
-      if (honey) {
-        e.preventDefault();
-        return;
-      }
-
-      if (!name || !email || !inquiry || !message) {
-        e.preventDefault();
-        if (!name) $('#name').addClass('is-invalid');
-        if (!email) $('#email').addClass('is-invalid');
-        if (!inquiry) $('#inquiry').addClass('is-invalid');
-        if (!message) $message.addClass('is-invalid');
-        showFormStatus(status, 'Please complete all required fields before sending.', 'error');
-        focusFirstInvalid();
-        return;
-      }
-
-      if (!emailRegex.test(email)) {
-        e.preventDefault();
-        $('#email').addClass('is-invalid');
-        showFormStatus(status, 'Please enter a valid email address.', 'error');
-        $('#email').trigger('focus');
-        return;
-      }
-
-      if (message.length < 10) {
-        e.preventDefault();
-        $message.addClass('is-invalid');
-        showFormStatus(status, 'Please write at least 10 characters in your message.', 'error');
-        $message.trigger('focus');
-        return;
-      }
-
-      $('#formReplyTo').val(email);
-      $('#formNext').val(returnUrl);
-      $sendBtn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
-      showFormStatus(status, 'Sending your message…', '');
-    });
   }
-
-  initContactForm();
 
   if (!$('.scroll-top-btn').length) {
     $('body').append('<button class="scroll-top-btn" aria-label="Back to top"><i class="fa fa-arrow-up"></i></button>');
