@@ -2523,6 +2523,96 @@ body.light-theme .about-bio-photo {
 	padding: 64px 0;
 }
 
+.page-hero--campus-cover .page-hero-media {
+	display: block;
+}
+
+.page-hero--campus-cover .page-hero-bg,
+.page-hero--campus-cover .page-hero-fg {
+	display: none;
+}
+
+.page-hero--campus-cover .page-hero-cover {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: center center;
+	display: block;
+	filter: none;
+	transform: none;
+}
+
+.campus-journey-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 24px;
+}
+
+.campus-journey-card {
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-card);
+	transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.campus-journey-card:hover {
+	border-color: var(--border-accent);
+	transform: translateY(-3px);
+}
+
+.campus-journey-card .journey-photo {
+	display: block;
+	overflow: hidden;
+	line-height: 0;
+}
+
+.campus-journey-card .journey-photo img {
+	width: 100%;
+	height: 220px;
+	object-fit: cover;
+	object-position: center center;
+	display: block;
+	transition: transform 0.35s ease;
+}
+
+.campus-journey-card:hover .journey-photo img {
+	transform: scale(1.03);
+}
+
+.campus-journey-card .journey-body {
+	padding: 20px 22px 22px;
+}
+
+.campus-journey-card .journey-tag {
+	display: inline-block;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 4px 10px;
+	border-radius: 999px;
+	background: rgba(212, 175, 55, 0.15);
+	border: 1px solid var(--border-accent);
+	color: var(--unisza-gold);
+	margin-bottom: 10px;
+}
+
+.campus-journey-card h4 {
+	margin: 0 0 8px;
+	font-size: 17px;
+	color: var(--text-primary);
+}
+
+.campus-journey-card p {
+	margin: 0;
+	font-size: 14px;
+	line-height: 1.65;
+	color: var(--text-secondary);
+	padding-top: 0;
+}
+
 .campus-env-grid {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
@@ -2599,7 +2689,8 @@ body.light-theme .campus-stat,
 body.light-theme .campus-facility-item,
 body.light-theme .campus-tour-card,
 body.light-theme .campus-official-photo,
-body.light-theme .campus-site-map {
+body.light-theme .campus-site-map,
+body.light-theme .campus-journey-card {
 	background: var(--bg-elevated);
 }
 
@@ -2617,6 +2708,10 @@ body.light-theme .campus-site-map {
 	}
 
 	.campus-facility-list {
+		grid-template-columns: 1fr;
+	}
+
+	.campus-journey-grid {
 		grid-template-columns: 1fr;
 	}
 }
