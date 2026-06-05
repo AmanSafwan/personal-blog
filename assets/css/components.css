@@ -4202,6 +4202,44 @@ body.light-theme .campus-programme-hero {
 	line-height: var(--leading);
 }
 
+.contact-activation-note {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin: 0 28px 16px;
+	padding: 14px 16px;
+	border-radius: var(--radius-md);
+	border: 1px solid rgba(212, 175, 55, 0.4);
+	background: rgba(212, 175, 55, 0.09);
+}
+
+.contact-activation-note > i {
+	flex-shrink: 0;
+	color: var(--unisza-gold);
+	font-size: 1.2rem;
+	margin-top: 2px;
+}
+
+.contact-activation-note p {
+	margin: 0;
+	font-size: var(--font-sm);
+	color: var(--text-secondary);
+	line-height: var(--leading);
+}
+
+.contact-activation-note strong {
+	color: var(--text-primary);
+}
+
+.contact-form-iframe {
+	display: block;
+	width: 100%;
+	min-height: 560px;
+	border: none;
+	background: transparent;
+	overflow: hidden;
+}
+
 .contact-trust-row {
 	display: flex;
 	flex-wrap: wrap;
@@ -4746,7 +4784,8 @@ body.light-theme .contact-faq-item {
 	.contact-form-head,
 	.contact-form-pro,
 	.contact-success-banner,
-	.contact-trust-row {
+	.contact-trust-row,
+	.contact-activation-note {
 		margin-left: 20px;
 		margin-right: 20px;
 	}

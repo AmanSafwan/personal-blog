@@ -91,80 +91,24 @@
               </div>
             </div>
 
+            <div class="contact-activation-note" role="note">
+              <i class="fa fa-envelope-open" aria-hidden="true"></i>
+              <p><strong>First time using this form?</strong> Submit once, then open Gmail and search <strong>FormSubmit</strong>. Click <strong>Activate Form</strong> in that email. After activation, all messages will arrive at <strong>safwanaman2003@gmail.com</strong>.</p>
+            </div>
+
             <div class="contact-trust-row" aria-label="Form assurances">
               <span class="contact-trust-item"><i class="fa fa-shield" aria-hidden="true"></i> Encrypted submission</span>
               <span class="contact-trust-item"><i class="fa fa-user" aria-hidden="true"></i> Read by me personally</span>
               <span class="contact-trust-item"><i class="fa fa-database" aria-hidden="true"></i> No data stored on site</span>
             </div>
 
-            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST" data-quillbot="false" data-gramm="false" data-gramm_editor="false" data-enable-grammarly="false">
-              <input type="hidden" name="_subject" value="Portfolio inquiry from AmanSafwan website">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_next" id="formNext" value="">
-              <input type="hidden" name="_replyto" id="formReplyTo" value="">
-              <input type="hidden" name="_autoresponse" value="Thank you for contacting Aman Safwan. Your message was received successfully. I will review it and reply within 24 to 48 hours.">
-              <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-              <div class="contact-field-row">
-                <div class="contact-field">
-                  <label for="name">Full Name <span class="contact-required">*</span></label>
-                  <div class="contact-input-wrap">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <input type="text" id="name" name="name" placeholder="Your full name" minlength="2" maxlength="120" required autocomplete="name" data-quillbot="false" data-gramm="false">
-                  </div>
-                </div>
-                <div class="contact-field">
-                  <label for="email">Email Address <span class="contact-required">*</span></label>
-                  <div class="contact-input-wrap">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false" data-quillbot="false" data-gramm="false">
-                  </div>
-                </div>
-              </div>
-
-              <div class="contact-field-row">
-                <div class="contact-field">
-                  <label for="organization">Company / Organization</label>
-                  <div class="contact-input-wrap">
-                    <i class="fa fa-building" aria-hidden="true"></i>
-                    <input type="text" id="organization" name="organization" placeholder="Optional" maxlength="120" autocomplete="organization" data-quillbot="false" data-gramm="false">
-                  </div>
-                </div>
-                <div class="contact-field">
-                  <label for="inquiry">Inquiry Type <span class="contact-required">*</span></label>
-                  <div class="contact-input-wrap contact-input-wrap--select">
-                    <i class="fa fa-tag" aria-hidden="true"></i>
-                    <select id="inquiry" name="inquiry" required data-quillbot="false">
-                      <option value="" disabled selected>Select inquiry type</option>
-                      <option value="Internship Opportunity">Internship Opportunity</option>
-                      <option value="Project Collaboration">Project Collaboration</option>
-                      <option value="Freelance / Contract">Freelance / Contract</option>
-                      <option value="Academic / Research">Academic / Research</option>
-                      <option value="General Inquiry">General Inquiry</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div class="contact-field">
-                <label for="message">Your Message <span class="contact-required">*</span></label>
-                <div class="contact-input-wrap contact-input-wrap--textarea">
-                  <textarea id="message" name="message" rows="6" placeholder="Share the role title, project scope, expected timeline, and how you would like to collaborate." minlength="10" maxlength="3000" required data-quillbot="false" data-gramm="false"></textarea>
-                </div>
-                <div class="contact-field-meta">
-                  <span id="messageHint" class="contact-char-count">Minimum 10 characters</span>
-                  <span class="contact-field-tip"><i class="fa fa-lightbulb-o"></i> Clear details help me respond faster</span>
-                </div>
-              </div>
-
-              <div class="contact-form-actions">
-                <button type="submit" id="contactSendBtn" class="site-btn contact-submit-btn"><i class="fa fa-paper-plane"></i> Send Message</button>
-                <a href="mailto:safwanaman2003@gmail.com?subject=Portfolio%20Inquiry" class="contact-email-fallback"><i class="fa fa-envelope-o"></i> Email directly instead</a>
-              </div>
-              <p id="formStatus" class="form-status" aria-live="polite" role="status"></p>
-              <p class="contact-form-note"><i class="fa fa-info-circle"></i> By submitting, you agree that I may reply to your email address. Messages are delivered securely and are not stored on this website.</p>
-            </form>
+            <iframe
+              id="contactFormFrame"
+              class="contact-form-iframe"
+              src="contact-frame.html"
+              title="Send a message"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
           </div>
         </div>
 
