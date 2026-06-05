@@ -1,0 +1,549 @@
+/* =============================================
+   UniSZA Portfolio — Unified Design System
+   Consistent colors, overlays, and image handling
+   ============================================= */
+
+:root {
+	--unisza-gold: #d4af37;
+	--unisza-gold-dark: #b8941f;
+	--unisza-grey: #9ca3af;
+	--unisza-grey-dark: #6b7280;
+	--unisza-blue: #0077b5;
+	--unisza-blue-dark: #005885;
+
+	--bg-base: #0f1419;
+	--bg-elevated: #161d27;
+	--bg-surface: #1c2430;
+	--bg-header: #0a0a0a;
+
+	--text-primary: #f1f5f9;
+	--text-secondary: #94a3b8;
+	--text-muted: #64748b;
+
+	--border-subtle: rgba(255, 255, 255, 0.08);
+	--border-accent: rgba(212, 175, 55, 0.35);
+
+	--overlay-hero: linear-gradient(
+		160deg,
+		rgba(8, 10, 14, 0.92) 0%,
+		rgba(12, 16, 24, 0.82) 45%,
+		rgba(8, 10, 14, 0.88) 100%
+	);
+	--overlay-page: linear-gradient(
+		180deg,
+		rgba(8, 10, 14, 0.88) 0%,
+		rgba(10, 14, 20, 0.78) 100%
+	);
+
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--shadow-card: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+/* ---- Base ---- */
+body {
+	background: var(--bg-base);
+	color: var(--text-secondary);
+}
+
+body.light-theme {
+	--bg-base: #e8ecf1;
+	--bg-elevated: #ffffff;
+	--bg-surface: #f4f6f9;
+	--text-primary: #0f172a;
+	--text-secondary: #475569;
+	--text-muted: #64748b;
+	--border-subtle: rgba(15, 23, 42, 0.1);
+	--overlay-hero: linear-gradient(
+		160deg,
+		rgba(8, 10, 14, 0.82) 0%,
+		rgba(12, 16, 24, 0.72) 50%,
+		rgba(8, 10, 14, 0.8) 100%
+	);
+	--overlay-page: linear-gradient(
+		180deg,
+		rgba(8, 10, 14, 0.8) 0%,
+		rgba(10, 14, 20, 0.7) 100%
+	);
+	background: var(--bg-base);
+}
+
+/* ---- Header & logo (match UniSZA black) ---- */
+.header-section,
+.main-menu,
+.site-logo {
+	background: var(--bg-header) !important;
+}
+
+.site-logo {
+	padding: 8px 16px 8px 0 !important;
+	border-right: 1px solid var(--border-subtle);
+}
+
+.site-logo img {
+	height: 48px !important;
+	max-width: 118px !important;
+}
+
+.main-menu li a {
+	color: var(--text-primary);
+	padding-top: 38px;
+	padding-bottom: 38px;
+}
+
+.main-menu li a:after {
+	background: var(--unisza-gold);
+}
+
+body.light-theme .header-section,
+body.light-theme .main-menu,
+body.light-theme .site-logo {
+	background: var(--bg-header) !important;
+}
+
+body.light-theme .main-menu li a {
+	color: #e2e8f0;
+}
+
+/* ---- Background photos ---- */
+.set-bg {
+	background-position: center center;
+	background-size: cover;
+}
+
+.hero-item:after,
+.page-top-section:after {
+	background: var(--overlay-hero);
+	opacity: 1;
+}
+
+.page-top-section:after {
+	background: var(--overlay-page);
+}
+
+.banner-section {
+	position: relative;
+	background-position: center center;
+	background-size: cover;
+}
+
+.banner-section:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--overlay-hero);
+	z-index: 1;
+}
+
+.banner-section .container {
+	position: relative;
+	z-index: 2;
+}
+
+/* ---- Accent colors (replace gaming neon) ---- */
+.site-btn {
+	background: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+.site-btn:hover {
+	color: #0a0a0a;
+	box-shadow: 0 10px 22px rgba(212, 175, 55, 0.28);
+}
+
+.site-btn.sb-color {
+	background: var(--unisza-blue);
+	color: #fff;
+}
+
+.site-btn.sb-color:hover {
+	color: #fff;
+	box-shadow: 0 10px 22px rgba(0, 119, 181, 0.3);
+}
+
+.read-more:hover,
+.quick-links a:hover,
+.site-pagination a.active,
+.cp-item h3,
+.portfolio-card h3 i,
+.quick-links a i {
+	color: var(--unisza-gold);
+}
+
+.theme-toggle {
+	border-color: var(--unisza-gold);
+	color: var(--unisza-gold);
+}
+
+.theme-toggle:hover {
+	background: rgba(212, 175, 55, 0.12);
+}
+
+.scroll-top-btn {
+	border-color: var(--unisza-gold);
+	color: var(--unisza-gold);
+}
+
+.scroll-top-btn:hover {
+	background: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+.page-top-section h2:after {
+	background: var(--unisza-gold);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+	background: var(--unisza-gold);
+	border-color: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+/* ---- Section backgrounds (unified) ---- */
+.portfolio-section,
+.characters-boxes-section,
+.linkedin-banner,
+.photo-journal-section,
+.blog-section,
+.feed-section {
+	background: var(--bg-base);
+}
+
+.characters-section,
+.work-steps-section {
+	background: var(--bg-elevated);
+}
+
+.footer-section {
+	background: var(--bg-header);
+}
+
+body.light-theme .portfolio-section,
+body.light-theme .characters-boxes-section,
+body.light-theme .linkedin-banner,
+body.light-theme .photo-journal-section,
+body.light-theme .blog-section,
+body.light-theme .characters-section,
+body.light-theme .work-steps-section,
+body.light-theme .footer-section {
+	background: var(--bg-elevated);
+}
+
+body.light-theme .characters-section {
+	background: var(--bg-surface);
+}
+
+/* ---- Cards ---- */
+.portfolio-card,
+.repo-card,
+.repo-loading,
+.characters-box,
+.blog-post,
+.sb-widget,
+.contact-card {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+}
+
+.portfolio-card:hover,
+.repo-card:hover {
+	border-color: var(--border-accent);
+	box-shadow: var(--shadow-card);
+}
+
+.portfolio-card h3,
+.repo-card h4,
+.repo-card h4 a,
+.character-info h2,
+.character-info h5,
+.section-heading h2,
+.work-step-box h4,
+.game-title h2,
+.blog-post h3,
+.blog-post h4 {
+	color: var(--text-primary);
+}
+
+body.light-theme .portfolio-card,
+body.light-theme .repo-card,
+body.light-theme .characters-box,
+body.light-theme .blog-post,
+body.light-theme .sb-widget {
+	background: var(--bg-elevated);
+	border-color: var(--border-subtle);
+}
+
+/* ---- Work steps ---- */
+.work-steps:after {
+	display: none;
+}
+
+.work-step-box .ws-icon {
+	background: var(--bg-surface);
+	border-color: var(--unisza-gold);
+}
+
+.work-step-box .ws-icon .fa {
+	color: var(--unisza-gold);
+}
+
+/* ---- Hero typography ---- */
+.hero-item h2 {
+	font-size: clamp(2rem, 5vw, 3.75rem);
+	line-height: 1.15;
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.hero-item p {
+	font-size: clamp(1rem, 2vw, 1.15rem);
+	max-width: 720px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #cbd5e1;
+	text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.page-top-section h2 {
+	font-size: clamp(2rem, 4.5vw, 3.25rem);
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Images: prevent harsh cropping ---- */
+.photo-card {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+	box-shadow: var(--shadow-card);
+}
+
+.photo-card img {
+	height: auto;
+	min-height: 200px;
+	max-height: 280px;
+	object-fit: contain;
+	object-position: center center;
+	background: #0a0e14;
+}
+
+.photo-card:after {
+	background: linear-gradient(
+		180deg,
+		rgba(2, 6, 23, 0) 35%,
+		rgba(2, 6, 23, 0.88) 100%
+	);
+}
+
+.blog-profile-img {
+	max-height: 320px;
+	object-fit: contain;
+	object-position: top center;
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+}
+
+.profile-photo {
+	object-fit: contain;
+	object-position: top center;
+	border: none;
+	box-shadow: none;
+}
+
+/* ---- About biodata stats & tags (UniSZA gold) ---- */
+.stat-box {
+	background: rgba(212, 175, 55, 0.08) !important;
+	border: 1px solid var(--border-accent) !important;
+	border-radius: var(--radius-md) !important;
+}
+
+.stat-num-static,
+.stat-num {
+	color: var(--unisza-gold) !important;
+}
+
+.stat-label {
+	color: var(--text-muted) !important;
+}
+
+.skill-tags span {
+	background: rgba(212, 175, 55, 0.1);
+	border: 1px solid var(--border-accent);
+	color: var(--text-secondary);
+}
+
+body.light-theme .about-bio-content h2,
+body.light-theme .character-info h2 {
+	color: var(--text-primary);
+}
+
+body.light-theme .about-bio-content h5,
+body.light-theme .character-info h5 {
+	color: var(--text-secondary);
+}
+
+body.light-theme .about-bio-content p,
+body.light-theme .character-info p {
+	color: var(--text-secondary);
+}
+
+.linkedin-sidebar-card img {
+	display: none;
+}
+
+.linkedin-sidebar-card h4 {
+	color: var(--text-primary);
+}
+
+.linkedin-sidebar-card p {
+	color: var(--text-muted);
+}
+
+body.light-theme .sb-widget {
+	background: var(--bg-elevated);
+	border-color: var(--border-subtle);
+}
+
+body.light-theme .portfolio-card,
+body.light-theme .characters-box {
+	background: var(--bg-elevated);
+	border-color: var(--border-subtle);
+}
+
+/* ---- Photo journal filters ---- */
+.gallery-filter-btn {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+	color: var(--text-secondary);
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+	background: var(--unisza-gold);
+	border-color: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+body.light-theme .gallery-filter-btn {
+	background: var(--bg-elevated);
+	color: var(--text-secondary);
+}
+
+body.light-theme .photo-card {
+	background: var(--bg-elevated);
+}
+
+body.light-theme .photo-card img {
+	background: #eef1f5;
+}
+
+/* ---- Section headings ---- */
+.section-heading h2 {
+	font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.section-heading p {
+	color: var(--text-secondary);
+}
+
+/* ---- Footer logo ---- */
+.footer-widget .about-widget img {
+	max-width: 96px;
+	opacity: 0.95;
+}
+
+.footer-widget .about-widget p {
+	color: var(--text-muted);
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+/* ---- Form focus ---- */
+body.light-theme .comment-form input:focus,
+body.light-theme .comment-form textarea:focus {
+	border-color: var(--unisza-gold);
+}
+
+.form-status.success {
+	color: var(--unisza-gold);
+}
+
+/* ---- Repo accents ---- */
+.repo-lang {
+	border-color: var(--border-accent);
+	color: var(--unisza-gold);
+}
+
+.repo-card:hover {
+	border-color: var(--border-accent);
+}
+
+/* ---- Responsive hero height ---- */
+@media only screen and (max-width: 991px) {
+	.hero-item {
+		height: 620px;
+		padding-top: 120px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.hero-item {
+		height: 520px;
+		padding-top: 100px;
+	}
+
+	.page-top-section {
+		height: 320px;
+		padding-top: 160px;
+	}
+
+	.photo-card img {
+		min-height: 180px;
+		max-height: 240px;
+	}
+}
+
+/* ---- Stats & skills ---- */
+.stat-box {
+	background: rgba(212, 175, 55, 0.08);
+	border-color: var(--border-accent);
+}
+
+.stat-num,
+.stat-num-static {
+	color: var(--unisza-gold);
+}
+
+.skill-tags span {
+	background: rgba(255, 255, 255, 0.04);
+	border-color: var(--border-subtle);
+	color: var(--unisza-gold);
+}
+
+.skill-tags span:hover {
+	background: rgba(212, 175, 55, 0.12);
+	border-color: var(--unisza-gold);
+}
+
+body.light-theme .stat-box {
+	background: rgba(212, 175, 55, 0.1);
+	border-color: var(--border-accent);
+}
+
+body.light-theme .skill-tags span {
+	background: #fff;
+	border-color: var(--border-subtle);
+	color: var(--unisza-gold-dark);
+}
+
+/* ---- Social bar & loader ---- */
+.social-links-warp {
+	background: var(--bg-header);
+	border-top: 1px solid var(--border-subtle);
+}
+
+body.light-theme .social-links-warp {
+	background: var(--bg-surface);
+}
+
+#preloder {
+	background: var(--bg-header);
+}

@@ -1,0 +1,36 @@
+name: Sync LinkedIn feed
+
+on:
+  push:
+    paths:
+      - 'data/linkedin-post-urls.json'
+      - 'scripts/sync-linkedin-posts.mjs'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Build embed feed from LinkedIn post URLs
+        run: node scripts/sync-linkedin-posts.mjs
+
+      - name: Commit updated feed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/linkedin-feed.json
+          if git diff --staged --quiet; then
+            echo "No feed changes."
+          else
+            git commit -m "Sync LinkedIn feed from post URLs"
+            git push
+          fi
