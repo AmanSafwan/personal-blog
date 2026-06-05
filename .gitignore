@@ -1,0 +1,16 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.code-workspace
+
+# Local / temp
+*.ps1
+*.log
+.cache/
+
+# Vendor archives (optional local only)
+docs/source-archives/*.zip

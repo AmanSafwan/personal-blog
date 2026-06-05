@@ -1,0 +1,995 @@
+/* =============================================
+   UniSZA Portfolio, Unified Design System
+   Consistent colors, overlays, and image handling
+   ============================================= */
+
+:root {
+	--unisza-gold: #d4af37;
+	--unisza-gold-dark: #b8941f;
+	--unisza-grey: #9ca3af;
+	--unisza-grey-dark: #6b7280;
+	--unisza-blue: #0077b5;
+	--unisza-blue-dark: #005885;
+
+	--bg-base: #0f1419;
+	--bg-elevated: #161d27;
+	--bg-surface: #1c2430;
+	--bg-header: #0a0a0a;
+
+	--text-primary: #f1f5f9;
+	--text-secondary: #94a3b8;
+	--text-muted: #64748b;
+
+	--border-subtle: rgba(255, 255, 255, 0.08);
+	--border-accent: rgba(212, 175, 55, 0.35);
+
+	--overlay-hero: linear-gradient(
+		160deg,
+		rgba(8, 10, 14, 0.92) 0%,
+		rgba(12, 16, 24, 0.82) 45%,
+		rgba(8, 10, 14, 0.88) 100%
+	);
+	--overlay-page: linear-gradient(
+		180deg,
+		rgba(8, 10, 14, 0.88) 0%,
+		rgba(10, 14, 20, 0.78) 100%
+	);
+
+	--radius-md: 12px;
+	--radius-lg: 16px;
+	--shadow-card: 0 8px 24px rgba(0, 0, 0, 0.28);
+
+	/* Typography & spacing, shared across all pages */
+	--font-xs: 0.8125rem;
+	--font-sm: 0.875rem;
+	--font-base: 0.9375rem;
+	--font-md: 1rem;
+	--font-lg: 1.125rem;
+	--leading: 1.65;
+	--leading-tight: 1.5;
+	--card-pad: 24px;
+	--card-pad-lg: 28px;
+	--section-py: 80px;
+
+	/* Semantic tokens, dark theme defaults */
+	--text-inverse: #f8fafc;
+	--link-color: #4db8e8;
+	--input-bg: #161d27;
+	--input-text: #f1f5f9;
+	--input-border: rgba(255, 255, 255, 0.12);
+	--input-placeholder: #64748b;
+	--status-success: #10ddb4;
+	--status-error: #ff5a72;
+	--header-bg: #0a0a0a;
+	--header-text: #f1f5f9;
+	--header-text-muted: #94a3b8;
+}
+
+/* ---- Base ---- */
+body {
+	background: var(--bg-base);
+	color: var(--text-secondary);
+	font-size: var(--font-base);
+	line-height: var(--leading);
+	-webkit-font-smoothing: antialiased;
+}
+
+body.light-theme {
+	--bg-base: #e8ecf1;
+	--bg-elevated: #ffffff;
+	--bg-surface: #f4f6f9;
+	--bg-header: #0f172a;
+	--text-primary: #0f172a;
+	--text-secondary: #334155;
+	--text-muted: #64748b;
+	--text-inverse: #f8fafc;
+	--border-subtle: rgba(15, 23, 42, 0.12);
+	--border-accent: rgba(180, 134, 11, 0.45);
+	--shadow-card: 0 8px 24px rgba(15, 23, 42, 0.08);
+	--link-color: #005885;
+	--input-bg: #ffffff;
+	--input-text: #0f172a;
+	--input-border: rgba(15, 23, 42, 0.15);
+	--input-placeholder: #94a3b8;
+	--status-success: #047857;
+	--status-error: #dc2626;
+	--header-bg: #0f172a;
+	--header-text: #f1f5f9;
+	--header-text-muted: #cbd5e1;
+	--overlay-hero: linear-gradient(
+		160deg,
+		rgba(8, 10, 14, 0.82) 0%,
+		rgba(12, 16, 24, 0.72) 50%,
+		rgba(8, 10, 14, 0.8) 100%
+	);
+	--overlay-page: linear-gradient(
+		180deg,
+		rgba(8, 10, 14, 0.8) 0%,
+		rgba(10, 14, 20, 0.7) 100%
+	);
+	background: var(--bg-base);
+	color: var(--text-secondary);
+}
+
+/* ---- Header & logo (match UniSZA black) ---- */
+.header-section,
+.main-menu,
+.site-logo {
+	background: var(--bg-header) !important;
+}
+
+.site-logo {
+	padding: 8px 16px 8px 0 !important;
+	border-right: 1px solid var(--border-subtle);
+}
+
+.site-logo img {
+	height: 48px !important;
+	max-width: 118px !important;
+}
+
+.main-menu li a {
+	color: var(--header-text);
+}
+
+.main-menu li a:after {
+	background: var(--unisza-gold);
+}
+
+body.light-theme .header-section,
+body.light-theme .main-menu,
+body.light-theme .site-logo {
+	background: var(--header-bg) !important;
+}
+
+/* ---- Background photos ---- */
+.set-bg {
+	background-position: center center;
+	background-size: cover;
+}
+
+.hero-item:after,
+.page-top-section:after {
+	background: var(--overlay-hero);
+	opacity: 1;
+}
+
+.page-top-section:after {
+	background: var(--overlay-page);
+}
+
+.banner-section {
+	position: relative;
+	background-position: center center;
+	background-size: cover;
+}
+
+.banner-section:before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background: var(--overlay-hero);
+	z-index: 1;
+}
+
+.banner-section .container {
+	position: relative;
+	z-index: 2;
+}
+
+/* ---- Accent colors (replace gaming neon) ---- */
+.site-btn {
+	background: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+.site-btn:hover {
+	color: #0a0a0a;
+	box-shadow: 0 10px 22px rgba(212, 175, 55, 0.28);
+}
+
+.site-btn.sb-color {
+	background: var(--unisza-blue);
+	color: #fff;
+}
+
+.site-btn.sb-color:hover {
+	color: #fff;
+	box-shadow: 0 10px 22px rgba(0, 119, 181, 0.3);
+}
+
+.read-more:hover,
+.quick-links a:hover,
+.site-pagination a.active,
+.cp-item h3,
+.portfolio-card h3 i,
+.quick-links a i {
+	color: var(--unisza-gold);
+}
+
+.theme-toggle {
+	border-color: var(--unisza-gold);
+	color: var(--unisza-gold);
+}
+
+.theme-toggle:hover {
+	background: rgba(212, 175, 55, 0.12);
+}
+
+.scroll-top-btn {
+	border-color: var(--unisza-gold);
+	color: var(--unisza-gold);
+}
+
+.scroll-top-btn:hover {
+	background: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+.page-top-section h2:after {
+	background: var(--unisza-gold);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+	background: var(--unisza-gold);
+	border-color: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+/* ---- Section backgrounds (unified) ---- */
+.portfolio-section,
+.characters-boxes-section,
+.linkedin-banner,
+.photo-journal-section,
+.blog-section,
+.contact-section,
+.contact-topics-section,
+.contact-process-section,
+.feed-section {
+	background: var(--bg-base);
+}
+
+.characters-section,
+.work-steps-section {
+	background: var(--bg-elevated);
+}
+
+.footer-section {
+	background: var(--bg-header);
+}
+
+body.light-theme .portfolio-section,
+body.light-theme .characters-boxes-section,
+body.light-theme .linkedin-banner,
+body.light-theme .photo-journal-section,
+body.light-theme .blog-section,
+body.light-theme .contact-section,
+body.light-theme .contact-topics-section,
+body.light-theme .contact-process-section,
+body.light-theme .characters-section,
+body.light-theme .work-steps-section,
+body.light-theme .footer-section {
+	background: var(--bg-elevated);
+}
+
+body.light-theme .characters-section {
+	background: var(--bg-surface);
+}
+
+/* ---- Cards ---- */
+.portfolio-card,
+.repo-card,
+.repo-loading,
+.characters-box,
+.blog-post,
+.sb-widget,
+.contact-card {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+}
+
+.portfolio-card:hover,
+.repo-card:hover {
+	border-color: var(--border-accent);
+	box-shadow: var(--shadow-card);
+}
+
+.portfolio-card h3,
+.repo-card h4,
+.repo-card h4 a,
+.character-info h2,
+.character-info h5,
+.section-heading h2,
+.work-step-box h4,
+.game-title h2,
+.blog-post h3,
+.blog-post h4 {
+	color: var(--text-primary);
+}
+
+body.light-theme .portfolio-card,
+body.light-theme .repo-card,
+body.light-theme .characters-box,
+body.light-theme .blog-post,
+body.light-theme .sb-widget {
+	background: var(--bg-elevated);
+	border-color: var(--border-subtle);
+}
+
+/* ---- Work steps ---- */
+.work-steps:after {
+	display: none;
+}
+
+.work-step-box .ws-icon {
+	background: var(--bg-surface);
+	border-color: var(--unisza-gold);
+}
+
+.work-step-box .ws-icon .fa {
+	color: var(--unisza-gold);
+}
+
+/* ---- Hero typography ---- */
+.hero-item h2 {
+	font-size: clamp(2rem, 5vw, 3.75rem);
+	line-height: 1.15;
+	text-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+}
+
+.hero-item p {
+	font-size: clamp(1rem, 2vw, 1.15rem);
+	max-width: 720px;
+	margin-left: auto;
+	margin-right: auto;
+	color: #cbd5e1;
+	text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+}
+
+.page-top-section h2 {
+	font-size: clamp(2rem, 4.5vw, 3.25rem);
+	text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* ---- Images: prevent harsh cropping ---- */
+.photo-card {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+	box-shadow: var(--shadow-card);
+}
+
+.photo-card img {
+	height: auto;
+	min-height: 200px;
+	max-height: 280px;
+	object-fit: contain;
+	object-position: center center;
+	background: #0a0e14;
+}
+
+.photo-card:after {
+	background: linear-gradient(
+		180deg,
+		rgba(2, 6, 23, 0) 35%,
+		rgba(2, 6, 23, 0.88) 100%
+	);
+}
+
+.blog-profile-img {
+	max-height: 320px;
+	object-fit: contain;
+	object-position: top center;
+	background: var(--bg-surface);
+	border: 1px solid var(--border-subtle);
+}
+
+.profile-photo {
+	object-fit: contain;
+	object-position: top center;
+	border: none;
+	box-shadow: none;
+}
+
+/* ---- About biodata stats & tags (UniSZA gold) ---- */
+.stat-box {
+	background: rgba(212, 175, 55, 0.08) !important;
+	border: 1px solid var(--border-accent) !important;
+	border-radius: var(--radius-md) !important;
+}
+
+.stat-num-static,
+.stat-num {
+	color: var(--unisza-gold) !important;
+}
+
+.stat-label {
+	color: var(--text-muted) !important;
+}
+
+.skill-tags span {
+	background: rgba(212, 175, 55, 0.1);
+	border: 1px solid var(--border-accent);
+	color: var(--text-secondary);
+}
+
+body.light-theme .about-bio-content h2,
+body.light-theme .character-info h2 {
+	color: var(--text-primary);
+}
+
+body.light-theme .about-bio-content h5,
+body.light-theme .character-info h5 {
+	color: var(--text-secondary);
+}
+
+body.light-theme .about-bio-content p,
+body.light-theme .character-info p {
+	color: var(--text-secondary);
+}
+
+.linkedin-sidebar-card img {
+	display: none;
+}
+
+.linkedin-sidebar-card h4 {
+	color: var(--text-primary);
+}
+
+.linkedin-sidebar-card p {
+	color: var(--text-muted);
+}
+
+body.light-theme .sb-widget {
+	background: var(--bg-elevated);
+	border-color: var(--border-subtle);
+}
+
+body.light-theme .portfolio-card,
+body.light-theme .characters-box {
+	background: var(--bg-elevated);
+	border-color: var(--border-subtle);
+}
+
+/* ---- Photo journal filters ---- */
+.gallery-filter-btn {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+	color: var(--text-secondary);
+}
+
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+	background: var(--unisza-gold);
+	border-color: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+body.light-theme .gallery-filter-btn {
+	background: var(--bg-elevated);
+	color: var(--text-secondary);
+}
+
+body.light-theme .photo-card {
+	background: var(--bg-elevated);
+}
+
+body.light-theme .photo-card img {
+	background: #eef1f5;
+}
+
+/* ---- Section headings ---- */
+.section-heading h2 {
+	font-size: clamp(1.75rem, 3vw, 2.25rem);
+}
+
+.section-heading p {
+	color: var(--text-secondary);
+}
+
+/* ---- Footer logo ---- */
+.footer-widget .about-widget img {
+	max-width: 96px;
+	opacity: 0.95;
+}
+
+.footer-widget .about-widget p {
+	color: var(--text-muted);
+	font-size: 14px;
+	line-height: 1.7;
+}
+
+/* ---- Form focus ---- */
+body.light-theme .comment-form input:focus,
+body.light-theme .comment-form textarea:focus {
+	border-color: var(--unisza-gold);
+}
+
+.form-status.success {
+	color: var(--unisza-gold);
+}
+
+/* ---- Repo accents ---- */
+.repo-lang {
+	border-color: var(--border-accent);
+	color: var(--unisza-gold);
+}
+
+.repo-card:hover {
+	border-color: var(--border-accent);
+}
+
+/* ---- Responsive hero height ---- */
+@media only screen and (max-width: 991px) {
+	.hero-item {
+		height: auto;
+		min-height: clamp(420px, 65vh, 620px);
+		padding-top: clamp(80px, 12vh, 120px);
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.hero-item {
+		height: auto;
+		min-height: clamp(380px, 62vh, 520px);
+		padding-top: clamp(72px, 10vh, 100px);
+	}
+
+	.page-top-section {
+		height: 320px;
+		padding-top: 160px;
+	}
+
+	.photo-card img {
+		min-height: 180px;
+		max-height: 240px;
+	}
+}
+
+/* ---- Stats & skills ---- */
+.stat-box {
+	background: rgba(212, 175, 55, 0.08);
+	border-color: var(--border-accent);
+}
+
+.stat-num,
+.stat-num-static {
+	color: var(--unisza-gold);
+}
+
+.skill-tags span {
+	background: rgba(255, 255, 255, 0.04);
+	border-color: var(--border-subtle);
+	color: var(--unisza-gold);
+}
+
+.skill-tags span:hover {
+	background: rgba(212, 175, 55, 0.12);
+	border-color: var(--unisza-gold);
+}
+
+body.light-theme .stat-box {
+	background: rgba(212, 175, 55, 0.1);
+	border-color: var(--border-accent);
+}
+
+body.light-theme .skill-tags span {
+	background: #fff;
+	border-color: var(--border-subtle);
+	color: var(--unisza-gold-dark);
+}
+
+/* ---- Social bar & loader ---- */
+.social-links-warp {
+	background: var(--bg-header);
+	border-top: 1px solid var(--border-subtle);
+}
+
+body.light-theme .social-links-warp {
+	background: var(--bg-surface);
+}
+
+#preloder {
+	background: var(--bg-header);
+}
+
+/* =============================================
+   Theme parity, readable text in light & dark
+   Overrides template hardcoded #111 / #8c8c8c
+   ============================================= */
+
+body {
+	color: var(--text-secondary);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color: var(--text-primary);
+}
+
+p,
+li,
+label,
+figcaption {
+	color: var(--text-secondary);
+}
+
+small,
+.text-muted {
+	color: var(--text-muted);
+}
+
+/* Header & mobile nav, always light text on dark bar */
+.header-section,
+.main-menu,
+.site-logo,
+.slicknav_menu {
+	background: var(--header-bg) !important;
+}
+
+.main-menu li a,
+.slicknav_nav a,
+.slicknav_menu .slicknav_menutxt {
+	color: var(--header-text) !important;
+}
+
+.main-menu li a.active,
+.main-menu li a:hover,
+.slicknav_nav a:hover {
+	color: var(--unisza-gold) !important;
+}
+
+.theme-toggle {
+	background: transparent;
+	border-color: var(--unisza-gold);
+	color: var(--unisza-gold);
+}
+
+body.light-theme .theme-toggle {
+	background: rgba(255, 255, 255, 0.08);
+	color: var(--unisza-gold);
+	border-color: var(--unisza-gold);
+}
+
+/* Hero & banner, always light text over photos */
+.hero-item h2,
+.hero-item p,
+.page-hero--photo h1,
+.page-hero--photo h2,
+.page-hero--photo p,
+.page-hero--banner h1,
+.page-hero--banner h2,
+.page-hero--banner p,
+.page-hero--photo .breadcrumb-bar,
+.page-hero--banner .breadcrumb-bar,
+.banner-section h2,
+.banner-section p {
+	color: var(--text-inverse) !important;
+}
+
+.page-hero--photo .breadcrumb-bar a,
+.page-hero--banner .breadcrumb-bar a,
+.hero-item a.site-btn {
+	color: inherit;
+}
+
+/* Section headings */
+.section-heading h2,
+.section-heading h3,
+.campus-curriculum-title,
+.feed-page-header h3,
+.contact-form-head h3 {
+	color: var(--text-primary);
+}
+
+.section-heading p,
+.section-eyebrow,
+.campus-section-eyebrow,
+.about-bio-eyebrow {
+	color: var(--unisza-gold);
+}
+
+.section-heading p:not(.section-eyebrow):not(.campus-section-eyebrow):not(.about-bio-eyebrow) {
+	color: var(--text-secondary);
+}
+
+/* Cards & panels */
+.portfolio-card,
+.portfolio-card p,
+.repo-card,
+.repo-card p,
+.repo-meta,
+.repo-updated,
+.work-step-box p,
+.characters-box p,
+.blog-post p,
+.feed-card-text,
+.feed-card-text p,
+.feed-author-meta,
+.feed-post-time,
+.contact-channel-body a,
+.campus-intro-text p,
+.campus-curriculum-note,
+.campus-transcript-disclaimer,
+.campus-facility-item p,
+.campus-journey-card p,
+.campus-surroundings-card p,
+.campus-tour-card p,
+.campus-course-name,
+.campus-semester-session,
+.campus-academic-pill span,
+.campus-stat span,
+.github-stat span,
+.gallery-stat span,
+.contact-stat span,
+.contact-info-list span {
+	color: var(--text-secondary);
+}
+
+.portfolio-card h3,
+.repo-card h4,
+.repo-card h4 a,
+.work-step-box h4,
+.characters-box h4,
+.blog-post h3,
+.feed-author h4,
+.feed-profile-card-inner h4,
+.contact-channel-body h4,
+.campus-intro-text h2,
+.campus-semester-head h4,
+.campus-facility-item h4,
+.campus-journey-card h4,
+.campus-surroundings-card h4,
+.campus-tour-card h4,
+.campus-stat strong,
+.github-stat strong,
+.gallery-stat strong,
+.contact-stat strong,
+.campus-course-code,
+.campus-academic-pill strong {
+	color: var(--text-primary);
+}
+
+/* Forms */
+.comment-form input,
+.comment-form textarea,
+.comment-form select,
+.contact-form-pro input,
+.contact-form-pro select,
+.contact-form-pro textarea {
+	background: var(--input-bg);
+	border-color: var(--input-border);
+	color: var(--input-text);
+}
+
+.comment-form input::placeholder,
+.comment-form textarea::placeholder,
+.contact-form-pro input::placeholder,
+.contact-form-pro textarea::placeholder {
+	color: var(--input-placeholder);
+	opacity: 1;
+}
+
+.form-status.success {
+	color: var(--status-success);
+}
+
+.form-status.error {
+	color: var(--status-error);
+}
+
+/* Footer */
+.footer-section {
+	background: var(--bg-header);
+}
+
+.footer-section .fw-title,
+.footer-section .copyright strong {
+	color: var(--text-primary);
+}
+
+.footer-section .about-widget p,
+.footer-section .footer-widget ul li a,
+.footer-section .fw-latest-post .ln-text h6 a,
+.footer-section .copyright p {
+	color: var(--text-secondary);
+}
+
+.footer-section .footer-widget ul li a:hover,
+.footer-section .fw-latest-post .ln-text h6 a:hover {
+	color: var(--unisza-gold);
+}
+
+body.light-theme .footer-section {
+	background: var(--bg-elevated);
+	border-top: 1px solid var(--border-subtle);
+}
+
+body.light-theme .social-links-warp {
+	background: var(--bg-surface);
+}
+
+body.light-theme .social-links a i,
+body.light-theme .social-links a span {
+	color: var(--text-secondary);
+}
+
+body.light-theme .social-links a:hover i,
+body.light-theme .social-links a:hover span {
+	color: var(--unisza-gold);
+}
+
+/* Sidebar widgets */
+.sb-widget .sb-title,
+.sb-cata-list li a,
+.quick-links a,
+.linkedin-sidebar-card h4 {
+	color: var(--text-primary);
+}
+
+.sb-widget p,
+.sb-cata-list li span,
+.linkedin-sidebar-card p,
+.feed-sidebar-link {
+	color: var(--text-muted);
+}
+
+/* Feed & social */
+.feed-sync-bar,
+.feed-page-header,
+.feed-composer,
+.feed-card,
+.feed-profile-card,
+.feed-info-card,
+.contact-form-panel,
+.contact-channel-card,
+.contact-info-card {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+}
+
+body.light-theme .feed-section,
+body.light-theme .feed-sync-bar,
+body.light-theme .feed-page-header,
+body.light-theme .feed-composer,
+body.light-theme .feed-card,
+body.light-theme .contact-form-panel,
+body.light-theme .contact-channel-card,
+body.light-theme .contact-info-card,
+body.light-theme .campus-transcript-panel,
+body.light-theme .campus-programme-hero,
+body.light-theme .campus-stat,
+body.light-theme .campus-semester-card,
+body.light-theme .github-stat,
+body.light-theme .gallery-stat,
+body.light-theme .contact-stat {
+	background: var(--bg-elevated);
+}
+
+.feed-card-text a,
+.feed-card-footer a,
+.feed-sync-bar a,
+.contact-channel-body a {
+	color: var(--link-color);
+}
+
+.feed-action {
+	color: var(--text-secondary);
+}
+
+.feed-action:hover,
+.feed-action.liked {
+	color: var(--unisza-gold);
+}
+
+.feed-tab,
+.repo-filter-tab,
+.gallery-filter-btn {
+	background: var(--bg-surface);
+	border-color: var(--border-subtle);
+	color: var(--text-secondary);
+}
+
+.feed-tab:hover,
+.feed-tab.active,
+.repo-filter-tab:hover,
+.repo-filter-tab.active,
+.gallery-filter-btn:hover,
+.gallery-filter-btn.active {
+	background: var(--unisza-gold);
+	border-color: var(--unisza-gold);
+	color: #0a0a0a;
+}
+
+/* Campus transcript */
+.campus-course-grade {
+	color: var(--text-primary);
+}
+
+.campus-course-thead {
+	color: var(--text-muted);
+}
+
+.campus-result-pass {
+	color: var(--status-success);
+}
+
+.campus-semester-badge,
+.campus-semester-badge--live {
+	color: var(--unisza-gold);
+}
+
+/* Photo gallery */
+.photo-card img {
+	background: var(--bg-elevated);
+}
+
+body.light-theme .photo-card img {
+	background: #eef1f5;
+}
+
+/* Repo & stats */
+.repo-lang {
+	color: var(--unisza-gold);
+	border-color: var(--border-accent);
+}
+
+.stat-label,
+.skill-tags span {
+	color: var(--text-secondary);
+}
+
+/* Scroll & loader */
+.scroll-top-btn {
+	border-color: var(--unisza-gold);
+	color: var(--unisza-gold);
+	background: var(--bg-surface);
+}
+
+body.light-theme .scroll-top-btn {
+	background: var(--bg-elevated);
+	color: var(--unisza-gold-dark);
+}
+
+body.light-theme #preloder {
+	background: var(--bg-elevated);
+}
+
+/* About page */
+.about-bio-content h2,
+.character-info h2 {
+	color: var(--text-primary);
+}
+
+.about-bio-content h5,
+.character-info h5 {
+	color: var(--text-secondary);
+}
+
+.about-bio-content p,
+.character-info p {
+	color: var(--text-secondary);
+}
+
+body.light-theme .about-bio-photo-wrap {
+	background: #eef1f5;
+}
+
+/* Empty & loading states */
+.feed-loading,
+.feed-empty,
+.repo-loading {
+	color: var(--text-muted);
+}
+
+.feed-empty h3 {
+	color: var(--text-primary);
+}
+
+.feed-empty p {
+	color: var(--text-secondary);
+}

@@ -1,16 +1,16 @@
-# Personal Blog Portfolio — Aman Safwan
+# Personal Blog Portfolio, Aman Safwan
 
-**Course:** CSD 34203 — Special Topics in Software Development  
+**Course:** CSD 34203, Special Topics in Software Development  
 **Faculty:** FIK (Faculty of Informatics and Computing), UniSZA  
-**Assessment:** CLO3 — GitHub Portfolio (Personal Blog Page) — 20%  
+**Assessment:** CLO3, GitHub Portfolio (Personal Blog Page), 20%  
 **Main Project:** Personal Blog / Portfolio Website  
-**Author:** Aman Safwan — Software Development Student
+**Author:** Aman Safwan, Software Development Student
 
 ---
 
 ## Project Description
 
-This repository contains my **Personal Blog Portfolio** — a multi-page website built with HTML, CSS, and JavaScript. It demonstrates my software development learning journey, showcases my real GitHub repositories, and documents how I plan, build, and deliver projects independently.
+This repository contains my **Personal Blog Portfolio**, a multi-page website built with HTML, CSS, and JavaScript. It demonstrates my software development learning journey, showcases my real GitHub repositories, and documents how I plan, build, and deliver projects independently.
 
 The site is designed for professional presentation and is deployed on **GitHub Pages** as a living portfolio for my degree.
 
@@ -32,8 +32,10 @@ The site is designed for professional presentation and is deployed on **GitHub P
 |---------|-------------|
 | **Home Page** | Hero slider, portfolio overview, live GitHub repositories |
 | **About Page** | Profile, degree focus, skills progress indicators |
-| **Blog Page** | 3 sample posts about my learning and portfolio journey |
+| **Campus Page** | UniSZA Kampus Besut, FIK, study environment & journey |
 | **Projects Page** | Live-loaded repositories from GitHub API |
+| **Blog Page** | LinkedIn feed with real post embeds |
+| **Gallery Page** | 36+ photos with category filters and lightbox |
 | **Contact Page** | Working contact form with validation (sends to email) |
 | **Responsive Design** | Mobile-friendly layout using Bootstrap + custom CSS |
 | **CSS Styling** | Layout, colors, typography, cards, and sections |
@@ -45,15 +47,29 @@ The site is designed for professional presentation and is deployed on **GitHub P
 
 ## Technologies Used
 
-- **HTML5** — Page structure and semantic content
-- **CSS3** — Layout, typography, colors, responsive design, theme system
-- **JavaScript** — Interactivity, form handling, GitHub API, theme persistence
-- **jQuery** — DOM manipulation and plugins
-- **Bootstrap** — Responsive grid and components
-- **Owl Carousel** — Hero slider animations
-- **SlickNav** — Mobile navigation menu
-- **FormSubmit** — Contact form email delivery
-- **Git & GitHub** — Version control, repository hosting, GitHub Pages
+- **HTML5**, Page structure and semantic content
+- **CSS3**, Layout, typography, colors, responsive design, theme system
+- **JavaScript**, Interactivity, form handling, GitHub API, theme persistence
+- **jQuery**, DOM manipulation and plugins
+- **Bootstrap**, Responsive grid and components
+- **Owl Carousel**, Hero slider animations
+- **SlickNav**, Mobile navigation menu
+- **FormSubmit**, Contact form email delivery
+- **Git & GitHub**, Version control, repository hosting, GitHub Pages
+
+---
+
+## File Format: HTML (not PHP)
+
+This project uses **static HTML** pages on purpose:
+
+| Format | Used? | Reason |
+|--------|-------|--------|
+| **HTML** | Yes | GitHub Pages serves static files. No server required. |
+| **PHP** | No | Not needed. Contact form uses [FormSubmit](https://formsubmit.co) (AJAX). GitHub API and LinkedIn feed run in the browser. |
+| **JSON** | Yes | Data files for LinkedIn feed (`data/`) |
+
+If you open the site in **XAMPP** (`htdocs/personal-blog/`), HTML works the same. PHP would only be useful for server-side forms or database work, which this portfolio does not use.
 
 ---
 
@@ -61,18 +77,31 @@ The site is designed for professional presentation and is deployed on **GitHub P
 
 ```text
 personal-blog/
-├── index.html          # Home page
-├── about.html          # About page
-├── blog.html           # Blog page (3 sample posts)
-├── projects.html       # Projects page (GitHub repos)
-├── contact.html        # Contact page
-├── css/
-│   └── style.css       # Main stylesheet
-├── js/
-│   └── main.js         # JavaScript interactions
-├── img/                # Images and assets
-├── .nojekyll           # GitHub Pages configuration
-└── README.md           # Project documentation
+├── index.html              # Home
+├── about.html              # About
+├── campus.html             # UniSZA campus & FIK
+├── projects.html           # GitHub projects
+├── blog.html               # Blog & LinkedIn feed
+├── gallery.html            # Photo journal
+├── contact.html            # Contact form
+├── assets/
+│   ├── css/                # Stylesheets (Bootstrap, theme, components)
+│   ├── js/                 # JavaScript (main, LinkedIn feed)
+│   ├── fonts/              # Font Awesome webfonts
+│   └── img/
+│       ├── banners/        # Page header images (1920×520)
+│       ├── brand/          # UniSZA logo
+│       ├── campus/         # Official campus photos
+│       ├── gallery/        # Personal photo journal
+│       └── profile/        # Profile images
+├── data/                   # LinkedIn feed JSON
+├── docs/
+│   └── source-archives/    # Original template/vendor zip files
+├── scripts/                # LinkedIn sync script (Node.js)
+├── .github/workflows/      # GitHub Actions
+├── .nojekyll               # GitHub Pages (skip Jekyll)
+├── .gitignore
+└── README.md
 ```
 
 ---
@@ -83,11 +112,11 @@ personal-blog/
 
 - [x] Home page created (`index.html`)
 - [x] About page created (`about.html`)
-- [x] Blog page with 2–3 sample posts (`blog.html` — 3 posts)
+- [x] Blog page with 2–3 sample posts (`blog.html`, 3 posts)
 - [x] Contact page included (`contact.html`)
 - [x] Website responsive for mobile (Bootstrap + media queries)
-- [x] CSS styles included — layout, colors, typography
-- [x] Basic JavaScript interaction — dark mode, carousel, form validation, GitHub API
+- [x] CSS styles included, layout, colors, typography
+- [x] Basic JavaScript interaction, dark mode, carousel, form validation, GitHub API
 
 ### GitHub Requirements
 
@@ -117,7 +146,7 @@ personal-blog/
    ```
 2. Open the project folder in VS Code.
 3. Open `index.html` in your browser (Chrome, Edge, or Firefox).
-4. Navigate between pages using the menu: Home, About, Projects, Blog, Contact.
+4. Navigate between pages using the menu, or open via XAMPP: `http://localhost/personal-blog/`
 
 ---
 
@@ -192,4 +221,4 @@ LinkedIn: [https://www.linkedin.com/in/amansafwan](https://www.linkedin.com/in/a
 
 ## License
 
-This project was created for academic purposes (CSD 34203 — CLO3 Individual Project).
+This project was created for academic purposes (CSD 34203, CLO3 Individual Project).

@@ -23,14 +23,14 @@ jobs:
       - name: Build embed feed from LinkedIn post URLs
         run: node scripts/sync-linkedin-posts.mjs
 
-      - name: Commit updated feed
+      - name: Commit updated feed and images
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/linkedin-feed.json
+          git add data/linkedin-feed.json assets/img/linkedin/
           if git diff --staged --quiet; then
             echo "No feed changes."
           else
-            git commit -m "Sync LinkedIn feed from post URLs"
+            git commit -m "Sync LinkedIn native feed posts and images from URLs"
             git push
           fi
