@@ -100,7 +100,7 @@ body {
 	cursor: pointer;
 }
 
-/* ---- Page hero (no misaligned photo jumps) ---- */
+/* ---- Page hero with photo banners ---- */
 .page-hero {
 	position: relative;
 	padding: 72px 0 56px;
@@ -108,6 +108,93 @@ body {
 	background: linear-gradient(165deg, var(--bg-header) 0%, var(--bg-elevated) 55%, var(--bg-base) 100%);
 	border-bottom: 1px solid var(--border-subtle);
 	overflow: hidden;
+}
+
+.page-hero--photo {
+	padding: clamp(88px, 14vh, 120px) 0 clamp(64px, 10vh, 88px);
+	min-height: clamp(260px, 38vh, 380px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #0a0a0a;
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.page-hero--photo::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	right: 0;
+	background: linear-gradient(
+		135deg,
+		rgba(4, 4, 6, 0.82) 0%,
+		rgba(4, 4, 6, 0.52) 45%,
+		rgba(4, 4, 6, 0.78) 100%
+	);
+	pointer-events: none;
+	z-index: 0;
+}
+
+.page-hero--photo .container {
+	position: relative;
+	z-index: 1;
+	width: 100%;
+}
+
+.page-hero--photo h1,
+.page-hero--photo h2 {
+	color: #ffffff;
+	text-shadow: 0 2px 24px rgba(0, 0, 0, 0.55);
+}
+
+.page-hero--photo p {
+	color: rgba(255, 255, 255, 0.92);
+	text-shadow: 0 1px 12px rgba(0, 0, 0, 0.45);
+	max-width: 680px;
+}
+
+.page-hero--photo .breadcrumb-bar {
+	color: rgba(255, 255, 255, 0.72);
+}
+
+.page-hero--photo .breadcrumb-bar a {
+	color: var(--unisza-gold);
+}
+
+.page-hero--about {
+	background-image: url('../img/banners/about.png');
+	background-position: center 18%;
+}
+
+.page-hero--campus {
+	background-image: url('../img/banners/campus.jpg');
+	background-position: center center;
+}
+
+.page-hero--projects {
+	background-image: url('../img/banners/projects.png');
+	background-position: center 40%;
+}
+
+.page-hero--blog {
+	background-image: url('../img/banners/blog.png');
+	background-position: center 35%;
+}
+
+.page-hero--gallery {
+	background-image: url('../img/banners/gallery.png');
+	background-position: center 30%;
+}
+
+.page-hero--contact {
+	background-image: url('../img/banners/contact.png');
+	background-position: center 25%;
 }
 
 .page-hero:before {
@@ -119,6 +206,20 @@ body {
 	height: 420px;
 	background: radial-gradient(circle, rgba(212, 175, 55, 0.12) 0%, transparent 70%);
 	pointer-events: none;
+}
+
+.page-hero--photo:before {
+	top: 0;
+	right: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 0;
+	background: linear-gradient(
+		135deg,
+		rgba(4, 4, 6, 0.82) 0%,
+		rgba(4, 4, 6, 0.52) 45%,
+		rgba(4, 4, 6, 0.78) 100%
+	);
 }
 
 .page-hero h1,
@@ -158,6 +259,35 @@ body {
 
 .hero-item {
 	padding-top: 60px !important;
+	min-height: clamp(420px, 58vh, 560px) !important;
+	background-size: cover !important;
+	background-position: center center !important;
+	background-repeat: no-repeat !important;
+}
+
+.hero-item.set-bg {
+	background-attachment: scroll;
+}
+
+.hero-item:after {
+	opacity: 0.88 !important;
+}
+
+.banner-section--photo {
+	min-height: 320px;
+	background-size: cover !important;
+	background-position: center center !important;
+}
+
+@media (max-width: 767px) {
+	.page-hero--photo {
+		min-height: 240px;
+		padding: 80px 0 56px;
+	}
+
+	.hero-item {
+		min-height: 380px !important;
+	}
 }
 
 .hero-slider .owl-dots {
@@ -1076,16 +1206,25 @@ body.light-theme .feed-action:hover {
 	background: rgba(212, 175, 55, 0.12);
 }
 
-body.light-theme .page-hero {
+body.light-theme .page-hero:not(.page-hero--photo) {
 	background: linear-gradient(165deg, #0a0a0a 0%, #1a1f28 40%, var(--bg-base) 100%);
 }
 
-body.light-theme .page-hero h2 {
+body.light-theme .page-hero:not(.page-hero--photo) h2 {
 	color: #f1f5f9;
 }
 
-body.light-theme .page-hero p {
+body.light-theme .page-hero:not(.page-hero--photo) p {
 	color: #cbd5e1;
+}
+
+body.light-theme .page-hero--photo::before {
+	background: linear-gradient(
+		135deg,
+		rgba(4, 4, 6, 0.86) 0%,
+		rgba(4, 4, 6, 0.58) 45%,
+		rgba(4, 4, 6, 0.84) 100%
+	);
 }
 
 /* ---- About biodata — full photo, no frame ---- */
@@ -2133,11 +2272,6 @@ body.light-theme .about-bio-photo {
 /* =============================================
    Campus & FIK page
    ============================================= */
-
-.page-hero--campus {
-	background: linear-gradient(135deg, rgba(10, 10, 10, 0.92), rgba(26, 26, 26, 0.88)),
-		url('../img/campus/unisza-besut-campus.jpg') center / cover no-repeat;
-}
 
 .campus-overview {
 	background: var(--bg-base);
