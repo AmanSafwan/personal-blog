@@ -163,6 +163,17 @@ Commom elements
 	left: 0;
 	z-index: 999999;
 	background: #000;
+	pointer-events: none;
+}
+
+#preloder.is-active {
+	pointer-events: auto;
+}
+
+body.preloader-done #preloder {
+	display: none !important;
+	pointer-events: none !important;
+	visibility: hidden !important;
 }
 
 .loader {

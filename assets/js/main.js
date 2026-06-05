@@ -1,9 +1,19 @@
 'use strict';
 
-$(window).on('load', function () {
-  $('.loader').fadeOut();
-  $('#preloder').delay(350).fadeOut('slow');
+function hidePreloader() {
+  var $preloader = $('#preloder');
+  $preloader.removeClass('is-active').css({ pointerEvents: 'none' }).stop(true, true);
+  $('.loader').hide();
+  $preloader.hide();
+  $('body').addClass('preloader-done');
+}
+
+$(function () {
+  $('#preloder').addClass('is-active');
+  hidePreloader();
 });
+
+$(window).on('load', hidePreloader);
 
 (function ($) {
   $('.set-bg').each(function () {
@@ -157,7 +167,21 @@ $(window).on('load', function () {
 
     var $message = $('#message');
     var $charCount = $('#messageHint');
-    var submitLabel = '<i class="fa fa-send"></i> Send Message';
+    var $sendBtn = $('#contactSendBtn');
+    var submitLabel = '<i class="fa fa-paper-plane"></i> Send Message';
+    var returnUrl = window.location.href.split('?')[0].split('#')[0] + '?sent=1';
+
+    $('#formNext').val(returnUrl);
+
+    if (window.location.search.indexOf('sent=1') !== -1) {
+      $('#formStatus')
+        .text('Message sent successfully. I will reply to your email within 24–48 hours. Thank you!')
+        .addClass('success')
+        .removeClass('error');
+      if (window.history && window.history.replaceState) {
+        window.history.replaceState({}, document.title, returnUrl.replace('?sent=1', ''));
+      }
+    }
 
     function updateCharCount() {
       if (!$message.length || !$charCount.length) return;
@@ -169,25 +193,36 @@ $(window).on('load', function () {
       }
     }
 
-    $message.on('input', updateCharCount);
-    updateCharCount();
+    function showFormStatus(status, text, type) {
+      status.text(text).removeClass('error success');
+      if (type) {
+        status.addClass(type);
+      }
+      status[0].scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
 
-    $form.on('submit', function (e) {
-      e.preventDefault();
+    function focusFirstInvalid() {
+      var $first = $form.find('.is-invalid').first();
+      if ($first.length) {
+        $first[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        $first.trigger('focus');
+      }
+    }
+
+    function sendContactForm() {
       var name = $('#name').val().trim();
       var email = $('#email').val().trim();
-      var inquiry = $('#inquiry').val();
+      var inquiry = ($('#inquiry').val() || '').trim();
       var message = $message.val().trim();
       var honey = ($form.find('[name="_honey"]').val() || '').trim();
       var status = $('#formStatus');
-      var form = this;
-      var submitButton = $(form).find('button[type="submit"]');
+      var form = $form[0];
       var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
       $form.find('.is-invalid').removeClass('is-invalid');
 
       if (honey) {
-        return;
+        return false;
       }
 
       if (!name || !email || !inquiry || !message) {
@@ -195,51 +230,41 @@ $(window).on('load', function () {
         if (!email) $('#email').addClass('is-invalid');
         if (!inquiry) $('#inquiry').addClass('is-invalid');
         if (!message) $message.addClass('is-invalid');
-        status.text('Please complete all required fields before sending.').addClass('error').removeClass('success');
-        return;
+        showFormStatus(status, 'Please complete all required fields before sending.', 'error');
+        focusFirstInvalid();
+        return false;
       }
 
       if (!emailRegex.test(email)) {
         $('#email').addClass('is-invalid');
-        status.text('Please enter a valid email address.').addClass('error').removeClass('success');
-        return;
+        showFormStatus(status, 'Please enter a valid email address.', 'error');
+        $('#email').trigger('focus');
+        return false;
       }
 
       if (message.length < 10) {
         $message.addClass('is-invalid');
-        status.text('Please write at least 10 characters in your message.').addClass('error').removeClass('success');
-        return;
+        showFormStatus(status, 'Please write at least 10 characters in your message.', 'error');
+        $message.trigger('focus');
+        return false;
       }
 
-      submitButton.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
-      status.text('Sending your message securely…').removeClass('error success');
+      $('#formReplyTo').val(email);
+      $sendBtn.prop('disabled', true).html('<i class="fa fa-spinner fa-spin"></i> Sending...');
+      showFormStatus(status, 'Sending your message…', '');
 
-      var payload = new FormData(form);
+      $form.off('submit');
+      HTMLFormElement.prototype.submit.call(form);
+      return true;
+    }
 
-      fetch(form.action, {
-        method: 'POST',
-        body: payload,
-        headers: {
-          Accept: 'application/json'
-        }
-      })
-        .then(function (response) {
-          if (!response.ok) {
-            throw new Error('Unable to send message');
-          }
-          return response.json();
-        })
-        .then(function () {
-          status.text('Message sent successfully. I will reply to your email within 24–48 hours. Thank you!').addClass('success').removeClass('error');
-          form.reset();
-          updateCharCount();
-        })
-        .catch(function () {
-          status.text('Sending failed. Please try again or email safwanaman2003@gmail.com directly.').addClass('error').removeClass('success');
-        })
-        .finally(function () {
-          submitButton.prop('disabled', false).html(submitLabel);
-        });
+    $message.on('input', updateCharCount);
+    updateCharCount();
+
+    $sendBtn.on('click', sendContactForm);
+    $form.on('submit', function (e) {
+      e.preventDefault();
+      sendContactForm();
     });
   }
 

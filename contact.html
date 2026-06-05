@@ -74,7 +74,7 @@
 
       <div class="row contact-layout">
         <div class="col-lg-8">
-          <div class="contact-form-panel reveal-on-scroll">
+          <div class="contact-form-panel">
             <div class="contact-form-head">
               <div>
                 <h3><i class="fa fa-paper-plane"></i> Send a Message</h3>
@@ -83,10 +83,12 @@
               <span class="contact-form-badge"><i class="fa fa-lock"></i> Secure via FormSubmit</span>
             </div>
 
-            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/ajax/safwanaman2003@gmail.com" method="post" novalidate>
+            <form id="contactForm" class="contact-form-pro" action="https://formsubmit.co/safwanaman2003@gmail.com" method="POST" novalidate>
               <input type="hidden" name="_subject" value="New portfolio message from AmanSafwan">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_next" id="formNext" value="">
+              <input type="hidden" name="_replyto" id="formReplyTo" value="">
               <input type="text" name="_honey" class="contact-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
 
               <div class="contact-field-row">
@@ -101,7 +103,7 @@
                   <label for="email">Email Address <span class="contact-required">*</span></label>
                   <div class="contact-input-wrap">
                     <i class="fa fa-envelope" aria-hidden="true"></i>
-                    <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email">
+                    <input type="email" id="email" name="email" placeholder="you@company.com" required autocomplete="email" inputmode="email" autocapitalize="off" autocorrect="off" spellcheck="false">
                   </div>
                 </div>
               </div>
@@ -111,7 +113,7 @@
                 <div class="contact-input-wrap contact-input-wrap--select">
                   <i class="fa fa-tag" aria-hidden="true"></i>
                   <select id="inquiry" name="inquiry" required>
-                    <option value="" disabled selected>Select a topic</option>
+                    <option value="" disabled selected hidden>Select a topic</option>
                     <option value="Internship Opportunity">Internship Opportunity</option>
                     <option value="Project Collaboration">Project Collaboration</option>
                     <option value="Freelance / Contract">Freelance / Contract</option>
@@ -133,7 +135,7 @@
               </div>
 
               <div class="contact-form-actions">
-                <button type="submit" class="site-btn contact-submit-btn"><i class="fa fa-send"></i> Send Message</button>
+                <button type="button" id="contactSendBtn" class="site-btn contact-submit-btn"><i class="fa fa-paper-plane"></i> Send Message</button>
                 <a href="mailto:safwanaman2003@gmail.com" class="contact-email-fallback"><i class="fa fa-envelope-o"></i> Or email directly</a>
               </div>
               <p id="formStatus" class="form-status" aria-live="polite" role="status"></p>
