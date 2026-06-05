@@ -48,13 +48,15 @@ $(window).on('load', function () {
     var cpvalue = $(this).data('cpvalue');
     var cpcolor = $(this).data('cpcolor');
     var cpid = $(this).data('cpid');
+    var isSkillRing = $(this).hasClass('skill-ring');
+    var size = isSkillRing ? 100 : 80;
     $(this).append('<div class="' + cpid + '"></div><div class="progress-value"><h3>' + cpvalue + '%</h3></div>');
     $('.' + cpid).circleProgress({
       value: Math.min(cpvalue / 100, 1),
-      size: 80,
-      thickness: 4,
+      size: size,
+      thickness: isSkillRing ? 5 : 4,
       fill: cpcolor,
-      emptyFill: 'rgba(0, 0, 0, 0)'
+      emptyFill: isSkillRing ? 'rgba(212, 175, 55, 0.12)' : 'rgba(0, 0, 0, 0)'
     });
   });
 
@@ -410,13 +412,30 @@ $(window).on('load', function () {
 
     $('#photoJournalGrid .photo-card[data-category]').each(function () {
       var cat = $(this).data('category');
-      if (filter === 'all' || cat === filter) {
-        $(this).show();
+      var show = filter === 'all' || cat === filter;
+      var $card = $(this);
+      if (show) {
+        $card.stop(true).css({ opacity: 0, display: 'block' }).animate({ opacity: 1 }, 280);
       } else {
-        $(this).hide();
+        $card.stop(true).animate({ opacity: 0 }, 180, function () {
+          $card.hide();
+        });
       }
     });
+    updateGalleryCount();
   });
+
+  function updateGalleryCount() {
+    var $grid = $('#photoJournalGrid');
+    if (!$grid.length) return;
+    var visible = $grid.find('.photo-card:visible').length;
+    var total = $grid.find('.photo-card').length;
+    $('#galleryPhotoCount').text(visible === total ? total : visible + ' / ' + total);
+  }
+
+  if ($('#photoJournalGrid').length) {
+    updateGalleryCount();
+  }
 
   /* ---- LinkedIn feed is handled by js/linkedin-feed.js ---- */
 

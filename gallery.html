@@ -42,9 +42,11 @@
 
   <section class="photo-journal-section spad">
     <div class="container">
-      <div class="section-heading text-center reveal-on-scroll">
-        <h2>Photo Journal</h2>
-        <p>Real moments from my degree journey at UniSZA — Dean's List awards, leadership roles, networking workshops, and campus life. Click any photo to view full size with details.</p>
+      <div class="gallery-stats-bar reveal-on-scroll" aria-live="polite">
+        <div class="gallery-stat"><strong id="galleryPhotoCount">36</strong><span>Photos</span></div>
+        <div class="gallery-stat"><strong>5</strong><span>Categories</span></div>
+        <div class="gallery-stat"><strong>UniSZA</strong><span>Campus Journey</span></div>
+        <div class="gallery-stat"><strong><i class="fa fa-expand"></i></strong><span>Click to Zoom</span></div>
       </div>
 
       <div class="gallery-filter reveal-on-scroll" aria-label="Filter photo journal">
@@ -58,14 +60,14 @@
 
       <div class="photo-grid" id="photoJournalGrid" aria-live="polite">
 
-        <!-- Achievements -->
-        <a class="photo-card image-popup" href="img/gallery/raw-38.png" data-category="achievements" data-caption="Professional headshot — Bachelor of Computer Science (Software Development), UniSZA. Open for internship 20 Sep 2026 – 19 Mar 2027.">
+        <!-- Featured -->
+        <a class="photo-card photo-card--featured image-popup" href="img/gallery/raw-38.png" data-category="achievements" data-caption="Professional headshot — Bachelor of Computer Science (Software Development), UniSZA. Open for internship 20 Sep 2026 – 19 Mar 2027.">
           <img src="img/gallery/raw-38.png" alt="Professional headshot of Aman Safwan in suit and tie">
-          <div class="photo-meta"><span class="photo-tag">Achievement</span><h4>Professional Headshot</h4></div>
+          <div class="photo-meta"><span class="photo-tag">Featured</span><h4>Professional Headshot</h4></div>
         </a>
-        <a class="photo-card image-popup" href="img/gallery/raw-32.png" data-category="achievements" data-caption="Receiving the Anugerah Cemerlang (Excellence Award) on stage at UniSZA — recognition for consistent academic performance and Dean's List standing.">
+        <a class="photo-card photo-card--featured image-popup" href="img/gallery/raw-32.png" data-category="achievements" data-caption="Receiving the Anugerah Cemerlang (Excellence Award) on stage at UniSZA — recognition for consistent academic performance and Dean's List standing.">
           <img src="img/gallery/raw-32.png" alt="Aman Safwan receiving Anugerah Cemerlang certificate on stage">
-          <div class="photo-meta"><span class="photo-tag">Achievement</span><h4>Anugerah Cemerlang</h4></div>
+          <div class="photo-meta"><span class="photo-tag">Featured</span><h4>Anugerah Cemerlang</h4></div>
         </a>
         <a class="photo-card image-popup" href="img/gallery/raw-23.png" data-category="achievements" data-caption="Award presentation at Majlis Anugerah Cemerlang — receiving the Penghargaan Anugerah Cemerlang certificate from university officials.">
           <img src="img/gallery/raw-23.png" alt="Certificate presentation at excellence award ceremony">
@@ -213,6 +215,18 @@
         </a>
 
       </div>
+
+      <div class="gallery-cta reveal-on-scroll">
+        <div class="gallery-cta-inner">
+          <h3>Want to connect?</h3>
+          <p>Explore my projects, read my LinkedIn blog, or reach out for internship opportunities.</p>
+          <div class="gallery-cta-actions">
+            <a href="projects.html" class="site-btn"><i class="fa fa-github"></i> View Projects</a>
+            <a href="blog.html" class="site-btn sb-color"><i class="fa fa-linkedin"></i> Read Blog</a>
+            <a href="contact.html" class="site-btn">Contact Me</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -236,8 +250,6 @@
   <script src="js/owl.carousel.min.js"></script>
   <script src="js/circle-progress.min.js"></script>
   <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/linkedin-feed.js"></script>
-  <script src="https://platform.linkedin.com/in.js" type="text/javascript">lang: en_US</script>
   <script src="js/main.js"></script>
 </body>
 </html>
