@@ -4904,20 +4904,6 @@ body.light-theme .contact-faq-item {
 		bottom: calc(88px + env(safe-area-inset-bottom, 0px)) !important;
 	}
 
-	.slicknav_menu:not(.slicknav_open) .slicknav_nav,
-	.slicknav_nav.slicknav_hidden {
-		display: none !important;
-		visibility: hidden !important;
-		pointer-events: none !important;
-		height: 0 !important;
-		overflow: hidden !important;
-	}
-
-	.slicknav_open .slicknav_nav,
-	.slicknav_menu.slicknav_open .slicknav_nav {
-		pointer-events: auto;
-	}
-
 	.contact-field-tip {
 		display: none;
 	}
@@ -5432,9 +5418,25 @@ button,
 }
 
 @media (max-width: 767px) {
+	.reveal-on-scroll {
+		opacity: 1;
+		transform: none;
+	}
+
+	.main-menu,
+	.header-add {
+		display: none !important;
+		visibility: hidden !important;
+		pointer-events: none !important;
+		position: absolute !important;
+		width: 0 !important;
+		height: 0 !important;
+		overflow: hidden !important;
+	}
+
 	.header-section {
 		flex-wrap: nowrap;
-		z-index: 10000;
+		z-index: 10002;
 	}
 
 	.header-actions {
@@ -5443,6 +5445,8 @@ button,
 		gap: 8px;
 		margin-left: auto;
 		flex-shrink: 0;
+		position: relative;
+		z-index: 10003;
 	}
 
 	.slicknav_menu {
@@ -5464,6 +5468,7 @@ button,
 		display: inline-flex !important;
 		align-items: center;
 		justify-content: center;
+		z-index: 10004;
 	}
 
 	.header-actions .slicknav_nav,
@@ -5482,6 +5487,53 @@ button,
 		background: var(--bg-header) !important;
 		border-bottom: 1px solid var(--border-subtle);
 		box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+	}
+
+	/* slicknav_open is on .slicknav_btn, not .slicknav_menu */
+	.slicknav_nav.slicknav_hidden {
+		display: none !important;
+		visibility: hidden !important;
+		pointer-events: none !important;
+		height: 0 !important;
+		max-height: 0 !important;
+		overflow: hidden !important;
+		padding: 0 !important;
+		border: none !important;
+		box-shadow: none !important;
+	}
+
+	.slicknav_btn.slicknav_open + .slicknav_nav,
+	body.mobile-nav-open .slicknav_nav {
+		display: block !important;
+		visibility: visible !important;
+		pointer-events: auto !important;
+		height: auto !important;
+		max-height: calc(100dvh - var(--header-h, 72px) - env(safe-area-inset-top, 0px)) !important;
+		overflow-y: auto !important;
+		padding: 8px 0 !important;
+	}
+
+	.mobile-nav-backdrop {
+		display: none;
+		position: fixed;
+		inset: 0;
+		top: calc(var(--header-h, 72px) + env(safe-area-inset-top, 0px));
+		background: rgba(0, 0, 0, 0.45);
+		z-index: 10000;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	body.mobile-nav-open {
+		overflow: hidden;
+		touch-action: none;
+	}
+
+	body.mobile-nav-open .mobile-nav-backdrop {
+		display: block;
+		pointer-events: auto;
 	}
 
 	.slicknav_nav a {
@@ -5549,6 +5601,17 @@ button,
 		right: calc(16px + env(safe-area-inset-right, 0px)) !important;
 		min-width: 44px;
 		min-height: 44px;
+		z-index: 9998;
+	}
+
+	.contact-form-iframe-wrap,
+	.contact-form-iframe {
+		pointer-events: auto;
+		touch-action: manipulation;
+	}
+
+	.contact-form-iframe {
+		max-width: 100%;
 	}
 
 	.photo-card--featured img {

@@ -120,18 +120,44 @@ $(window).on('load', hidePreloader);
 
   initHeader();
 
+  function syncMobileNavState() {
+    var $btn = $('.slicknav_btn');
+    if (!$btn.length) return;
+    var isOpen = $btn.hasClass('slicknav_open');
+    $('body').toggleClass('mobile-nav-open', isOpen);
+    $('.mobile-nav-backdrop').prop('hidden', !isOpen);
+  }
+
   if ($.fn.slicknav && $('.main-menu').length && !$('.slicknav_menu').length) {
+    if (!$('.mobile-nav-backdrop').length) {
+      $('body').append('<button type="button" class="mobile-nav-backdrop" aria-label="Close menu" hidden></button>');
+    }
+
     $('.main-menu').slicknav({
       appendTo: '.header-actions',
       allowParentLinks: true,
       closeOnClick: true,
-      label: ''
+      label: '',
+      afterOpen: syncMobileNavState,
+      afterClose: syncMobileNavState
     });
   }
 
+  $(document).on('click', '.slicknav_btn', function () {
+    window.setTimeout(syncMobileNavState, 0);
+    window.setTimeout(syncMobileNavState, 250);
+  });
+
+  $(document).on('click', '.mobile-nav-backdrop', function () {
+    var $btn = $('.slicknav_btn');
+    if ($btn.length && $btn.hasClass('slicknav_open')) {
+      $btn.trigger('click');
+    }
+  });
+
   $(document).on('click', '.slicknav_nav a', function () {
     var $btn = $('.slicknav_btn');
-    if ($btn.length && $btn.parent().hasClass('slicknav_open')) {
+    if ($btn.length && $btn.hasClass('slicknav_open')) {
       $btn.trigger('click');
     }
   });

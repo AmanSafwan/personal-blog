@@ -18,9 +18,9 @@ The site is designed for professional presentation and is deployed on **GitHub P
 
 ## Live Demo
 
-**GitHub Pages:** [https://amansafwan.github.io/personal-blog/](https://amansafwan.github.io/personal-blog/)
+**GitHub Pages:** [https://amansafwan.github.io/portfolio-aman/](https://amansafwan.github.io/portfolio-aman/)
 
-**GitHub Repository:** [https://github.com/AmanSafwan/personal-blog](https://github.com/AmanSafwan/personal-blog)
+**GitHub Repository:** [https://github.com/AmanSafwan/portfolio-aman](https://github.com/AmanSafwan/portfolio-aman)
 
 **GitHub Profile:** [https://github.com/AmanSafwan](https://github.com/AmanSafwan)
 
@@ -41,7 +41,7 @@ The site is designed for professional presentation and is deployed on **GitHub P
 | **CSS Styling** | Layout, colors, typography, cards, and sections |
 | **JavaScript** | Dark/light theme, active navigation, carousel, scroll-to-top, GitHub API |
 | **GitHub Integration** | Real repositories linked and displayed dynamically |
-| **GitHub Pages Ready** | Deployed at `amansafwan.github.io/personal-blog` |
+| **GitHub Pages Ready** | Deployed at `amansafwan.github.io/portfolio-aman` |
 
 ---
 
@@ -69,14 +69,14 @@ This project uses **static HTML** pages on purpose:
 | **PHP** | No | Not needed. Contact form uses [FormSubmit](https://formsubmit.co) (AJAX). GitHub API and LinkedIn feed run in the browser. |
 | **JSON** | Yes | Data files for LinkedIn feed (`data/`) |
 
-If you open the site in **XAMPP** (`htdocs/personal-blog/`), HTML works the same. PHP would only be useful for server-side forms or database work, which this portfolio does not use.
+If you open the site in **XAMPP** (`htdocs/portfolio-aman/`), HTML works the same. PHP would only be useful for server-side forms or database work, which this portfolio does not use.
 
 ---
 
 ## Folder Structure
 
 ```text
-personal-blog/
+portfolio-aman/
 ├── index.html              # Home
 ├── about.html              # About
 ├── campus.html             # UniSZA campus & FIK
@@ -120,7 +120,7 @@ personal-blog/
 
 ### GitHub Requirements
 
-- [x] GitHub repository created (`personal-blog`)
+- [x] GitHub repository created (`portfolio-aman`)
 - [x] Organized and clean folder structure
 - [x] Meaningful commits with clear messages (see below)
 - [x] Updated README.md with full documentation
@@ -142,24 +142,24 @@ personal-blog/
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/AmanSafwan/personal-blog.git
+   git clone https://github.com/AmanSafwan/portfolio-aman.git
    ```
 2. Open the project folder in VS Code.
 3. Open `index.html` in your browser (Chrome, Edge, or Firefox).
-4. Navigate between pages using the menu, or open via XAMPP: `http://localhost/personal-blog/`
+4. Navigate between pages using the menu, or open via XAMPP: `http://localhost/portfolio-aman/`
 
 ---
 
 ## GitHub Pages Deployment
 
-1. Push all files to GitHub repository `AmanSafwan/personal-blog`.
+1. Push all files to GitHub repository `AmanSafwan/portfolio-aman`.
 2. Go to **Settings → Pages**.
 3. Under **Build and deployment**:
    - Source: **Deploy from a branch**
    - Branch: **main** (or your default branch)
    - Folder: **/ (root)**
 4. Save and wait 1–3 minutes for deployment.
-5. Visit: [https://amansafwan.github.io/personal-blog/](https://amansafwan.github.io/personal-blog/)
+5. Visit: [https://amansafwan.github.io/portfolio-aman/](https://amansafwan.github.io/portfolio-aman/)
 
 ---
 
