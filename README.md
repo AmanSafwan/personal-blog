@@ -132,7 +132,7 @@ portfolio-aman/
 - [x] Description
 - [x] Features list
 - [x] Technologies used
-- [x] Screenshots section (add images before final submission)
+- [x] Screenshots included (home, about, campus, projects, blog, gallery, contact)
 - [x] How to run the project
 - [x] Demo link (GitHub Pages)
 
@@ -178,17 +178,37 @@ Use meaningful commits to show development progress:
 
 ## Screenshots
 
-Add screenshots to this section before final SPB submission. Capture from the live site or locally:
+Captured from the live site at [https://amansafwan.github.io/portfolio-aman/](https://amansafwan.github.io/portfolio-aman/).
 
-| Page | Screenshot |
-|------|------------|
-| Home | `screenshots/home.png` |
-| About | `screenshots/about.png` |
-| Projects | `screenshots/projects.png` |
-| Blog | `screenshots/blog.png` |
-| Contact | `screenshots/contact.png` |
+### Home
 
-> Tip: After taking screenshots, add them to a `screenshots/` folder in the repo and embed them here using Markdown image syntax.
+![Home page](screenshots/home.png)
+
+### About
+
+![About page](screenshots/about.png)
+
+### Campus
+
+![Campus overview](screenshots/campus.png)
+
+![Campus facilities](screenshots/campus-facilities.png)
+
+### Projects
+
+![Projects page](screenshots/projects.png)
+
+### Blog
+
+![Blog page](screenshots/blog.png)
+
+### Gallery
+
+![Gallery page](screenshots/gallery.png)
+
+### Contact
+
+![Contact page](screenshots/contact.png)
 
 ---
 
