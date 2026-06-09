@@ -5,9 +5,12 @@
  * Data: data/linkedin-feed.json (run: node scripts/sync-linkedin-posts.mjs)
  */
 (function ($) {
-  var FEED_PATH = 'data/linkedin-feed.json';
+  var FEED_PATH = 'data/linkedin-feed.json?v=20260609b';
   var PAGE_SIZE = 4;
   var TEXT_CLAMP = 420;
+  var BLOCKED_POST_IDS = {
+    'li-7465065625539899392': true
+  };
 
   var state = {
     profile: null,
@@ -68,6 +71,7 @@
     }).then(function (data) {
       state.profile = data.profile || {};
       state.posts = (data.posts || []).filter(function (p) {
+        if (BLOCKED_POST_IDS[p.id]) return false;
         return p.text || p.image;
       });
       state.lastSynced = data.lastSynced;
